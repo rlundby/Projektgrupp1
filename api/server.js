@@ -6,9 +6,20 @@ const app = require('./app.js');
 //Server
 http.createServer(app).listen(port, () => {console.log('NodeJS Web Server Up on port ' + port)});
 
-//DB
-db.connect(process.env.MONGO_DB_CONNECTIONSTRING, { useNewUrlParser: true })
-    .then(() => console.log('MongoDB Database Server online on port 27017'))
-    .catch(err => console.log(err));
+//dv
+let MongoClient = require('mongodb').MongoClient;
+
+let uri = "mongodb+srv://user:user123@kulcluster-ovan0.mongodb.net/test?retryWrites=true";
+MongoClient.connect(uri, function(err, client) {
+    //const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    if(err) {
+        console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+    }
+    console.log('Connected...');
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
+});
 
 db.set('useCreateIndex', true);
