@@ -1,0 +1,9 @@
+{
+  "env": {
+    "SERVER_HOST": "localhost",
+    "SERVER_PORT": "3001",
+    "MONGO_DB_CONNECTIONSTRING": "mongodb://localhost:27017/mydatabase",
+    "PRIVATE_SECRET_KEY": "gotmilkbitch"
+
+  }
+}
