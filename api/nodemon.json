@@ -2,7 +2,7 @@
   "env": {
     "SERVER_HOST": "localhost",
     "SERVER_PORT": "3001",
-    "MONGO_DB_CONNECTIONSTRING": "mongodb+srv://kay:user123@cluster0.mongodb.net/test",
+    "MONGO_DB_CONNECTIONSTRING": "mongodb+srv://kay:user123@cluster0.mongodb.net/projektarbete",
     "PRIVATE_SECRET_KEY": "thisisthesecretkey"
 
   }

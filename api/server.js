@@ -1,25 +1,32 @@
 const port = process.env.SERVER_PORT || 9999;
 const http = require('http');
-const db = require('mongoose');
 const app = require('./app.js');
+//const MongoClient = require('mongodb').MongoClient;
+const db = require('mongoose');
+
 
 //Server
 http.createServer(app).listen(port, () => {console.log('NodeJS Web Server Up on port ' + port)});
 
 //dv
-let MongoClient = require('mongodb').MongoClient;
-
-let uri = "mongodb+srv://user:user123@kulcluster-ovan0.mongodb.net/test?retryWrites=true";
-MongoClient.connect(uri, function(err, client) {
-    //const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    if(err) {
-        console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
-    }
-    console.log('Connected...');
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    client.close();
-});
-
-db.set('useCreateIndex', true);
+let uri = "mongodb+srv://user:user123@kulcluster-ovan0.mongodb.net/projektarbete";
+db.connect(uri, { useNewUrlParser: true })
+.then(() => console.log('MongoDB Database Server online on port 27017'))
+.catch(err => console.log(err));
+// MongoClient.connect(uri, function(err, client) {
+//
+//     let dbo = client.db("projektarbete");
+//     dbo.collection("transactions").findOne({}, function(err, result) {
+//         if (err) throw err;
+//         console.log(result);
+//         dbo.close();
+//     });
+//
+//     if(err) {
+//         console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+//     }
+//     console.log('Connected...');
+//
+//     // perform actions on the collection object
+//     client.close();
+// });
