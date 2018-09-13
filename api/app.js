@@ -21,6 +21,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 const transactionRoute = require('./routes/getLatestTransactions');
+const addTransactionRoute = require('./routes/addTransactions');
 app.use('/api/transactions',transactionRoute );
+app.use('/api/add-transaction',addTransactionRoute );
 // Export
 module.exports = app;
