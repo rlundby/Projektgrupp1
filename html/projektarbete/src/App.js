@@ -7,8 +7,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LatestTransactions/>
-        <Footer/>
+        <div className="wrapper">
+          <LatestTransactions/>
+          <Footer/>
+        </div>
       </div>
     );
   }
