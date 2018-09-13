@@ -20,14 +20,13 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-
-//Routes
+// Routes
 const transactionRoute = require('./routes/getLatestTransactions');
+const addTransactionRoute = require('./routes/addTransactions');
+const productRoute = require('./routes/getProducts');
 app.use('/api/transactions',transactionRoute );
-
-//Route for messages
-const messageRoute = require('./routes/getMessages');
-app.use('/api/messages', messageRoute);
+app.use('/api/add-transaction',addTransactionRoute );
+app.use('/api/products', productRoute);
 
 // Export
 module.exports = app;
