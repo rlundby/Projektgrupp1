@@ -20,7 +20,14 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+
+//Routes
 const transactionRoute = require('./routes/getLatestTransactions');
 app.use('/api/transactions',transactionRoute );
+
+//Route for messages
+const messageRoute = require('./routes/getMessages');
+app.use('/api/messages', messageRoute);
+
 // Export
 module.exports = app;
