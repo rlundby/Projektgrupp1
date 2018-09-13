@@ -9,7 +9,20 @@ exports.getLatestTransactions = (req, res) => {
                 count: transactions.length,
                 transactions: transactions
             };
-            res.status(200).json(results);
+            if (results.count > 6) {
+                let numberOfTransactions = results.count;
+                while(numberOfTransactions > 6) {
+                    results.transactions.shift();
+                    numberOfTransactions --;
+                }
+                res.status(200).json(results.transactions);
+
+            } else {
+                res.status(200).json(results.transactions);
+            }
+
+
+
         })
         .catch(error => {
             console.log(error);

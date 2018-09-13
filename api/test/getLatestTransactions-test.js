@@ -19,15 +19,29 @@ describe('BDD test with should', function(){
             .expect(200)
             .end(function(err,res){
                 res.status.should.equal(200);
-                res.body.count.should.equal(8);
+                res.body.length.should.not.equal(0);
                 done();
             });
-
-
     });
-    it('Function getLatestTransactions should be order after most recent first', function() {
-        transactions[0].date.should.be.gt(transactions[1].date);
-        transactions[1].date.should.be.gt(transactions[2].date);
-        transactions[2].date.should.be.lt(transactions[0].date);
+    it('Function getLatestTransactions never return more than 6 transactions', function(done) {
+        request.get('/')
+            .expect("Content-type",/json/)
+            .expect(200)
+            .end(function(err,res){
+                res.status.should.equal(200);
+                res.body.length.should.be.lt(7);
+                done();
+            });
+    });
+    it('Function getLatestTransactions should return transactions in correct order', function(done) {
+        request.get('/')
+            .expect("Content-type",/json/)
+            .expect(200)
+            .end(function(err,res){
+                res.status.should.equal(200);
+                Date.parse(res.body[1].date).should.be.lt(Date.parse(res.body[2].date));
+                Date.parse(res.body[2].date).should.be.gt(Date.parse(res.body[0].date));
+                done();
+            });
     });
 });
