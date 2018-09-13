@@ -20,7 +20,12 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+// Routes
 const transactionRoute = require('./routes/getLatestTransactions');
 app.use('/api/transactions',transactionRoute );
+
+const productRoute = require('./routes/getProducts');
+app.use('/api/products', productRoute);
+
 // Export
 module.exports = app;
