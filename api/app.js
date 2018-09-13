@@ -22,9 +22,10 @@ app.use(bodyParser.json());
 
 // Routes
 const transactionRoute = require('./routes/getLatestTransactions');
-app.use('/api/transactions',transactionRoute );
-
+const addTransactionRoute = require('./routes/addTransactions');
 const productRoute = require('./routes/getProducts');
+app.use('/api/transactions',transactionRoute );
+app.use('/api/add-transaction',addTransactionRoute );
 app.use('/api/products', productRoute);
 
 // Export
