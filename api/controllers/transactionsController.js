@@ -9,9 +9,9 @@ exports.getLatestTransactions = (req, res) => {
                 count: transactions.length,
                 transactions: transactions
             };
-            if (results.count > 6) {
+            if (results.count > 5) {
                 let numberOfTransactions = results.count;
-                while(numberOfTransactions > 6) {
+                while(numberOfTransactions > 5) {
                     results.transactions.shift();
                     numberOfTransactions --;
                 }
