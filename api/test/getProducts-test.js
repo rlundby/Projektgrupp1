@@ -1,7 +1,10 @@
-const should =  require('chai').should();
 const expect = require('chai').expect;
-const request = require('supertest')("http://localhost:3001/api/transactions");
-const transactions = require('../controllers/productsController');
+const request = require('supertest')("http://localhost:3001/api/products");
+const products = require('../controllers/productsController');
+
+let chai = require('chai');
+//let server = require('../server');
+const should = chai.should();
 
 // BDD Should
 describe('BDD test with should', function(){
@@ -13,7 +16,7 @@ describe('BDD test with should', function(){
         request.get('/')
             .expect(200, done);
     });
-    it('Function getProducts should return products', function(done) {
+    it('Function getProducts should return an array', function(done) {
         request.get('/')
             .expect("Content-type", /json/)
             .expect(200)
@@ -25,9 +28,19 @@ describe('BDD test with should', function(){
 
 
     });
-    it('Function getLatestTransactions should be order after most recent first', function() {
-        transactions[0].date.should.be.gt(transactions[1].date);
-        transactions[1].date.should.be.gt(transactions[2].date);
-        transactions[2].date.should.be.lt(transactions[0].date);
+    it('Objects in Products should contain keys: id, name, price', function() {
+        
+        request.get('/')
+            .expect("Content-type", /json/)
+            .expect(200)
+            .end(function(err,res){
+                res.status.should.equal(200);
+                res.body[0].should.have.key('hej');
+                console.log(res.body[0])
+                done();
+            });
     });
+    
+    
+    
 });

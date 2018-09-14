@@ -4,6 +4,7 @@ const products = require('../controllers/productsController');
 // Get all products
 route.get('/', products.getProducts);
 
-//Unsecred routes
+// Get product from id
+route.get('/:id', products.getProductWithId);
 
 module.exports = route;
