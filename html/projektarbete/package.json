@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "plugins": "^0.4.2",
-    "react": "^16.5.0",
+    "react": "^16.5.1",
     "react-dom": "^16.5.0",
     "react-scripts": "1.1.5"
   },
