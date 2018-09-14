@@ -25,10 +25,13 @@ const transactionRoute = require('./routes/getLatestTransactions');
 const addTransactionRoute = require('./routes/addTransactions');
 const updateTransactionRoute = require('./routes/updateTransaction');
 const productRoute = require('./routes/getProducts');
+const orderRoute = require('./routes/getOrders');
+
 app.use('/api/update-transaction', updateTransactionRoute);
 app.use('/api/transactions',transactionRoute );
 app.use('/api/add-transaction',addTransactionRoute );
 app.use('/api/products', productRoute);
+app.use('/api/orders', orderRoute);
 
 // Export
 module.exports = app;
