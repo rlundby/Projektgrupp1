@@ -5,10 +5,7 @@ exports.getProducts = (req, res) => {
     Product.find()
         .exec()
         .then(products => {
-            const results = {
-                products
-            };
-            res.status(200).json(results);
+            res.status(200).json(products);
         })
         .catch(error => {
             console.log(error);
