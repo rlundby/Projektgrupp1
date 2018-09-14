@@ -6,6 +6,7 @@ const transactionSchema = db.Schema({
     status: { type: String, required: true },
     amount: { type: Number, required: true },
     date: { type: Date, default: Date.now },
+    modified: {type: Date }
 });
 
 module.exports = db.model('Transaction', transactionSchema);
