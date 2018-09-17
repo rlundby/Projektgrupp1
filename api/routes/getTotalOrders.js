@@ -1,9 +1,7 @@
 const route = require('express').Router();
-const orders = require('../controllers/ordersController');
+const orders = require('../controllers/getTotalOrdersController');
 
-// Get all products
+// Get sum of all products
 route.get('/', orders.getTotalOrders);
-
-
 
 module.exports = route;
