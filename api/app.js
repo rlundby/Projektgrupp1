@@ -26,12 +26,17 @@ const addTransactionRoute = require('./routes/addTransactions');
 const updateTransactionRoute = require('./routes/updateTransaction');
 const productRoute = require('./routes/getProducts');
 const orderRoute = require('./routes/getOrders');
+const getEarningsRoute = require('./routes/getEarnings');
+const messageRoute = require('./routes/getMessages');
 
 app.use('/api/update-transaction', updateTransactionRoute);
 app.use('/api/transactions',transactionRoute );
 app.use('/api/add-transaction',addTransactionRoute );
 app.use('/api/products', productRoute);
 app.use('/api/orders', orderRoute);
+app.use('/api/get-monthly-earnings', getEarningsRoute);
+app.use('/api/messages', messageRoute);
+
 
 // Export
 module.exports = app;
