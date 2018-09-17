@@ -28,18 +28,18 @@ describe('BDD test with should', function(){
 
 
     });
-    it('Objects in Products should contain keys: id, name, price', function() {
-        
-        request.get('/')
-            .expect("Content-type", /json/)
-            .expect(200)
-            .end(function(err,res){
-                res.status.should.equal(200);
-                res.body[0].should.have.key('hej');
-                console.log(res.body[0])
-                done();
-            });
-    });
+    // it('Objects in Products should contain keys: id, name, price', function() {
+    //
+    //     request.get('/')
+    //         .expect("Content-type", /json/)
+    //         .expect(200)
+    //         .end(function(err,res){
+    //             res.status.should.equal(200);
+    //             res.body[0].should.have.key('hej');
+    //             console.log(res.body[0])
+    //             done();
+    //         });
+    // });
     
     
     
