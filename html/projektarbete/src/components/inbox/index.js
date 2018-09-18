@@ -30,7 +30,7 @@ export default class Inbox extends React.Component {
                     <h6 className='text-left m-3'>Inbox</h6>
                     {this.state.messages.map((message, i) => {
 
-                        return <Message data={message} index={i}/>
+                        return <Message data={message} index={i} key={i}/>
 
                     })}
                 </div>)
