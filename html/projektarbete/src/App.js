@@ -1,24 +1,33 @@
 import React, {Component} from 'react';
+import {Switch, Route} from 'react-router-dom';
 import './App.css';
-import LatestTransactions from './components/latestTransactions';
-import Footer from "./components/footer";
-import MonthlyEarnings from "./components/montlyEarnings";
 
-import Inbox from './components/inbox';
-import Header from "./components/header";
+
+import Main from './components/main';
+import Login from './components/authentication';
+
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            auth: false // hämta från session
+        };
+    }
+
+    handleChange = (bool) => {
+        this.setState({auth: bool})
+    };
+
+
   render() {
     return (
-      <div className="App">
-        <Header/>
-          <div className="wrapper">
-            <MonthlyEarnings/>
-            <Inbox/>
-            <LatestTransactions/>
-            <Footer/>
-          </div>
-      </div>
+      <Switch>
+          <Route exact path='/' render={(props) =>(
+              <Main {...props} data={this.state}/> )}/>
+          <Route path='/login' render={(props) =>(
+              <Login {...props} data={this.state} setAuth={this.handleChange}/> )}/>
+      </Switch>
     );
   }
 }
