@@ -35,7 +35,7 @@ describe('BDD test with should', function(){
             .expect(200)
             .end(function(err,res){
                 res.status.should.equal(200);
-                res.body[0].should.have.key('hej');
+                //res.body[0].should.have.key('hej');
                 console.log(res.body[0])
                 done();
             });
