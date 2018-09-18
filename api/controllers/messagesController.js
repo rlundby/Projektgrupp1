@@ -7,7 +7,7 @@ exports.getLatestMessages = (req, res) => {
         .exec()
         .then(messages => {
             res.status(200).json(messages)
-            console.log(messages)
+            //console.log(messages)
         })
         // plocka ut bara de 6-7 senaste meddelanden
         .catch(err => res.status(500).json({ errorcode: '500',  errorMessage: err}))

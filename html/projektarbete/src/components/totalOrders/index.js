@@ -3,17 +3,28 @@ import React, { Component } from 'react'
 class TotalOrders extends Component {
 
     state = {
-        orders: null
+        orders: null,
+        isLoaded: false
     };
 
     componentDidMount() {
-        fetch('http://localhost:3001/api/orders')
+        fetch('http://localhost:3001/api/get-total-orders')
             .then(response => response.json())
-            .then(orders => this.setState({ orders }));
+            .then(orders => {
+                this.setState({ 
+                    orders,
+                    isLoaded: true
+                 })
+            });
     }
 
     render() {
-        return (
+
+        if(!this.state.isLoaded) {
+            return null;
+        }
+        else {
+           return (
             <div className="col-xl-3 col-md-6">
                 <div className="card mini-stat bg-primary">
                     <div className="card-body mini-stat-img">
@@ -31,7 +42,9 @@ class TotalOrders extends Component {
                     </div>
                 </div>
             </div>
-        )
+        )  
+        }
+       
     }
 }
 

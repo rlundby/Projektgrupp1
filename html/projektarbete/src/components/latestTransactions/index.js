@@ -98,8 +98,7 @@ class LatestTransactions extends Component {
         }else if(this.state.editing) {
             return (
 
-                <div>
-                    <div className="row">
+                
                         <div className="col-xl-6">
                             <div className="card m-b-20">
                                 <div className="card-body">
@@ -128,13 +127,12 @@ class LatestTransactions extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                  
 
             )
         } else {
             return (
-                    <div className="row">
+                    
                         <div className="col-xl-6">
                             <div className="card m-b-20">
                                 <div className="card-body">
@@ -236,7 +234,7 @@ class LatestTransactions extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
             );
         }
     }

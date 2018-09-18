@@ -6,6 +6,7 @@ import MonthlyEarnings from "./components/montlyEarnings";
 
 import Inbox from './components/inbox';
 import TotalOrders from "./components/totalOrders";
+import LatestOrders from './components/latestOrders';
 
 class App extends Component {
   render() {
@@ -15,7 +16,10 @@ class App extends Component {
             <TotalOrders />
             <MonthlyEarnings/>
             <Inbox/>
-            <LatestTransactions/>
+            <div className='row'>
+              <LatestTransactions/>
+              <LatestOrders />
+            </div>
             <Footer/>
           </div>
       </div>
