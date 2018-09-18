@@ -13,6 +13,8 @@ let uri = "mongodb+srv://user:user123@kulcluster-ovan0.mongodb.net/projektarbete
 db.connect(uri, { useNewUrlParser: true })
 .then(() => console.log('MongoDB Database Server online on port 27017'))
 .catch(err => console.log(err));
+
+db.set('useCreateIndex', true);
 // MongoClient.connect(uri, function(err, client) {
 //
 //     let dbo = client.db("projektarbete");

@@ -134,7 +134,6 @@ class LatestTransactions extends Component {
             )
         } else {
             return (
-                <div>
                     <div className="row">
                         <div className="col-xl-6">
                             <div className="card m-b-20">
@@ -238,7 +237,6 @@ class LatestTransactions extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
             );
         }
     }

@@ -1,6 +1,10 @@
 const db = require('mongoose');
 const Transaction = require('../models/transaction');
 
+/*
+*  This function returns the 5 latest transactions from the database.
+*  No paramater or body needed.
+* */
 exports.getLatestTransactions = (req, res) => {
     Transaction.find()
         .exec()
