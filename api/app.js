@@ -21,16 +21,23 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // Routes
+
+const yearlyRoute = require('./routes/getYearly');
 const transactionRoute = require('./routes/getLatestTransactions');
 const addTransactionRoute = require('./routes/addTransactions');
 const updateTransactionRoute = require('./routes/updateTransaction');
 const productRoute = require('./routes/getProducts');
+
+
+app.use('/api/yearly', yearlyRoute);
+
 const getEarningsRoute = require('./routes/getEarnings');
 const messageRoute = require('./routes/getMessages');
 const signInRoute = require('./routes/signIn');
 const signUpRoute = require('./routes/signUp');
 const walletRoute = require('./routes/getUserWallet');
 const solditemsRoute = require('./routes/getSoldItems');
+
 
 app.use('/api/update-transaction', updateTransactionRoute);
 app.use('/api/transactions',transactionRoute );
