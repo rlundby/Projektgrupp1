@@ -5,7 +5,10 @@ import Footer from "./components/footer";
 import MonthlyEarnings from "./components/montlyEarnings";
 
 import Inbox from './components/inbox';
+import TotalOrders from "./components/totalOrders";
+import LatestOrders from './components/latestOrders';
 import Header from "./components/header";
+
 
 class App extends Component {
   render() {
@@ -13,9 +16,13 @@ class App extends Component {
       <div className="App">
         <Header/>
           <div className="wrapper">
+            <TotalOrders />
             <MonthlyEarnings/>
             <Inbox/>
-            <LatestTransactions/>
+            <div className='row'>
+              <LatestTransactions/>
+              <LatestOrders />
+            </div>
             <Footer/>
           </div>
       </div>
