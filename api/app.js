@@ -21,6 +21,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // Routes
+
+const yearlyRoute = require('./routes/getYearly');
 const transactionRoute = require('./routes/getLatestTransactions');
 const addTransactionRoute = require('./routes/addTransactions');
 const updateTransactionRoute = require('./routes/updateTransaction');
@@ -29,7 +31,13 @@ const getLatestOrdersRoute = require('./routes/getLatestOrders');
 const getTotalOrderRoute = require('./routes/getTotalOrders');
 const getEarningsRoute = require('./routes/getEarnings');
 const messageRoute = require('./routes/getMessages');
+const signInRoute = require('./routes/signIn');
+const signUpRoute = require('./routes/signUp');
+const walletRoute = require('./routes/getUserWallet');
+const solditemsRoute = require('./routes/getSoldItems');
 
+
+app.use('/api/yearly', yearlyRoute);
 app.use('/api/update-transaction', updateTransactionRoute);
 app.use('/api/transactions',transactionRoute );
 app.use('/api/add-transaction',addTransactionRoute );
@@ -38,6 +46,10 @@ app.use('/api/get-latest-orders', getLatestOrdersRoute);
 app.use('/api/get-total-orders', getTotalOrderRoute);
 app.use('/api/get-monthly-earnings', getEarningsRoute);
 app.use('/api/messages', messageRoute);
+app.use('/api/signin', signInRoute);
+app.use('/api/signup', signUpRoute);
+app.use('/api/user-wallet', walletRoute);
+app.use('/api/sold-items', solditemsRoute);
 
 
 // Export
