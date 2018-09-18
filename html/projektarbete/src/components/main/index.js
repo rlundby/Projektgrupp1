@@ -4,6 +4,8 @@ import {Redirect} from 'react-router-dom';
 import LatestTransactions from '../latestTransactions';
 import Footer from "../footer";
 import MonthlyEarnings from "../montlyEarnings";
+import TotalOrders from '../totalOrders';
+import LatestOrders from '../latestOrders';
 
 import Inbox from '../inbox';
 import Header from "../header";
@@ -24,9 +26,13 @@ class Main extends React.Component {
 
                 <Header/>
                 <div className="wrapper">
+                    <TotalOrders />
                     <MonthlyEarnings/>
                     <Inbox/>
-                    <LatestTransactions/>
+                    <div className='row'>
+                        <LatestTransactions/>
+                        <LatestOrders/>
+                    </div>
                     <Footer/>
                 </div>
             </div>
