@@ -21,7 +21,7 @@ class HeaderDashboard extends Component {
                                 </ol>
                                 <div className="state-information">
                                     <div className="state-graph">
-                                        <div class="testingstuff">
+                                        <div className="testingstuff">
                                             {/*  These graphs are still hard code */}
 
                                             <Sparklines data={[5, 3, 2, 10, 12, 14, 12, 12, 20, 10, 2, 5, 12]}>
