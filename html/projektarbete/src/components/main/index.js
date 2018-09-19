@@ -36,7 +36,11 @@ class Main extends React.Component {
 
                         </div>
                         <MonthlyEarnings/>
-                        <Inbox/>
+                        <div className='row'>
+                            <Inbox/>
+
+
+                        </div>
                         <div className='row'>
                             <LatestTransactions/>
                             <LatestOrders/>

@@ -26,13 +26,15 @@ export default class Inbox extends React.Component {
             )
         } else {
             return (
-                <div className='card p-3'>
-                    <h6 className='text-left m-3'>Inbox</h6>
-                    {this.state.messages.map((message, i) => {
+                <div className='col-xl-4 col-lg-6'>
+                    <div className='card m-b-20 p-3'>
+                        <h6 className='text-left m-3'>Inbox</h6>
+                        {this.state.messages.map((message, i) => {
 
-                        return <Message data={message} index={i} key={i}/>
+                            return <Message data={message} index={i} key={i}/>
 
-                    })}
+                        })}
+                    </div>
                 </div>)
         }
 
