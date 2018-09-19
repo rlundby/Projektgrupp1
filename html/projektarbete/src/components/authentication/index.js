@@ -67,7 +67,8 @@ class Login extends React.Component {
     }
 
     render() {
-        if(this.props.data.auth) {
+        let auth = sessionStorage.getItem('auth');
+        if(auth) {
            return <Redirect to="/" />
         }
 
