@@ -35,6 +35,7 @@ const signInRoute = require('./routes/signIn');
 const signUpRoute = require('./routes/signUp');
 const walletRoute = require('./routes/getUserWallet');
 const solditemsRoute = require('./routes/getSoldItems');
+const yearlyEarningsRoute = require('./routes/getYearlyEarnings');
 
 
 app.use('/api/yearly', yearlyRoute);
@@ -50,7 +51,7 @@ app.use('/api/signin', signInRoute);
 app.use('/api/signup', signUpRoute);
 app.use('/api/user-wallet', walletRoute);
 app.use('/api/sold-items', solditemsRoute);
-
+app.use('/api/get-yearly-earnings', yearlyEarningsRoute);
 
 // Export
 module.exports = app;
