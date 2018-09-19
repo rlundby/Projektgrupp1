@@ -11,21 +11,19 @@ describe('"YEARLY" tests', () => {
 
     it('"YEARLY" test should return an array', function(done) {
         request.get('/')
-        .expect("Content-type", "application/json")
+        .expect("Content-type", "/json/")
         .expect(200)
         .end(function(err,res){
-            console.log(res.body)
-            res.body.should.be.an('array');
+            res.body.result.should.be.an('array')
             done();
         });
     });
     it('"YEARLY" test market should return a number', function(done) {
         request.get('/')
-        .expect("Content-type", "application/json")
+        .expect("Content-type", "/json/")
         .expect(200)
         .end(function(err,res){
-            console.log(res.body)
-            res.body.yearly[0].market.should.be.an('number');
+            res.body.result[0].market.should.be.an('number');
             done();
         });
 
