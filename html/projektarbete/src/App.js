@@ -15,15 +15,21 @@ class App extends Component {
             this.setState({auth: sessionStorage.setItem('auth', auth)})
         } else {
             this.state = {
-                auth: false
+                auth: false,
+                activeUser: {}
             }
         }
     }
 
 
-    handleChange = (bool) => {
+    handleAuthChange = (bool) => {
         sessionStorage.setItem('auth', bool)
         this.setState({auth: bool})
+    };
+
+    handleUserChange = user => {
+        this.setState({ activeUser: user})
+        console.log('state, inloggad?', this.state.activeUser)
     };
 
 
@@ -33,7 +39,7 @@ class App extends Component {
           <Route exact path='/' render={(props) =>(
               <Main {...props} data={this.state}/> )}/>
           <Route path='/login' render={(props) =>(
-              <Login {...props} data={this.state} setAuth={this.handleChange}/> )}/>
+              <Login {...props} data={this.state} setAuth={this.handleAuthChange} activeUser={this.handleUserChange}/> )}/>
       </Switch>
     );
   }

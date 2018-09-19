@@ -28,9 +28,10 @@ class Login extends React.Component {
                 body: JSON.stringify({username: this.state.username, password: this.state.password})
             })
             .then(response => response.json())
-            .then(() => {
+            .then((user) => {
                 this.props.setAuth(true);
-
+                console.log('inloggad:', user);
+                this.props.activeUser(user);
                 this.setState({username: '', password: ''});
 
             })
