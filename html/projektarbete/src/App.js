@@ -1,31 +1,41 @@
 import React, {Component} from 'react';
+import {Switch, Route} from 'react-router-dom';
 import './App.css';
-import LatestTransactions from './components/latestTransactions';
-import Footer from "./components/footer";
-import MonthlyEarnings from "./components/montlyEarnings";
 
-import Inbox from './components/inbox';
-import TotalOrders from "./components/totalOrders";
-import LatestOrders from './components/latestOrders';
-import Header from "./components/header";
+
+import Main from './components/main';
+import Login from './components/authentication';
 
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        let auth = sessionStorage.getItem('auth');
+        if(auth) {
+            this.setState({auth: sessionStorage.setItem('auth', auth)})
+        } else {
+            this.state = {
+                auth: false // hämta från session sessionStorage.getItem(auth) ? : sessionStorage.setItem(auth)
+            }
+        }
+    }
+
+    // on signOut -> sessionStorage.removeItem('auth')
+
+    handleChange = (bool) => {
+        sessionStorage.setItem('auth', bool)
+        this.setState({auth: bool})
+    };
+
+
   render() {
     return (
-      <div className="App">
-        <Header/>
-          <div className="wrapper">
-            <TotalOrders />
-            <MonthlyEarnings/>
-            <Inbox/>
-            <div className='row'>
-              <LatestTransactions/>
-              <LatestOrders />
-            </div>
-            <Footer/>
-          </div>
-      </div>
+      <Switch>
+          <Route exact path='/' render={(props) =>(
+              <Main {...props} data={this.state}/> )}/>
+          <Route path='/login' render={(props) =>(
+              <Login {...props} data={this.state} setAuth={this.handleChange}/> )}/>
+      </Switch>
     );
   }
 }

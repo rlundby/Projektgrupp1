@@ -7,11 +7,11 @@ const User = require('../models/user');
 
 // Sign up user route
 exports.signup = (req, res) => {
-    User.find({email: req.body.email})
+    User.find({username: req.body.username})
         .exec()
         .then(user => {
             if (user.length > 0) {
-                return res.status(409).json({message: "A user with this email address already exists."})
+                return res.status(409).json({message: "A user with this username already exists."})
             } else {
                 encrypt.hash(req.body.password, 10, (err, hash) => {
                     if (err) {
@@ -21,7 +21,7 @@ exports.signup = (req, res) => {
                             _id: new db.Types.ObjectId,
                             email: req.body.email,
                             password: hash,
-                            userName: req.body.userName,
+                            username: req.body.username,
                         });
 
                         user.save()
