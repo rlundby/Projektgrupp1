@@ -3,6 +3,9 @@ import {Fragment as F} from "react";
 
 class HeaderNotification extends Component {
 
+    handleSignOut = () => {
+        sessionStorage.removeItem('auth')
+    };
 
     render() {
 
@@ -90,7 +93,7 @@ class HeaderNotification extends Component {
                             <a className="dropdown-item" href={linkURL} ><i
                                 className="mdi mdi-lock-open-outline m-r-5"></i> Lock screen</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item text-danger" href={linkURL} ><i
+                            <a className="dropdown-item text-danger" onClick={this.handleSignOut} href={linkURL} ><i
                                 className="mdi mdi-power text-danger"></i> Logout</a>
                         </div>
                     </div>
