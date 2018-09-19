@@ -10,11 +10,11 @@ const User = require('../models/user');
 
 // Sign in user route
 exports.signIn = (req, res) => {
-    console.log('signin: ', req.body)
+
     User.find({ username: req.body.username })
         .exec()
         .then( user => {
-            console.log('user', user)
+
             if(user.length === 0) {
                 return res.status(401).json({ message: 'Username or password is incorrect or empty'})
             } else {
