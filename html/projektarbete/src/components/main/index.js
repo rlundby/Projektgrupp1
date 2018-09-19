@@ -6,6 +6,7 @@ import Footer from "../footer";
 import MonthlyEarnings from "../montlyEarnings";
 import TotalOrders from '../totalOrders';
 import LatestOrders from '../latestOrders';
+import AveragePrice from '../averagePrice';
 
 import Inbox from '../inbox';
 import Header from "../header";
@@ -16,6 +17,7 @@ class Main extends React.Component {
 
 
     render() {
+
         let auth = sessionStorage.getItem('auth');
         if(!auth) {
             return <Redirect to="/login" />
@@ -26,12 +28,23 @@ class Main extends React.Component {
 
                 <Header/>
                 <div className="wrapper">
-                    <TotalOrders />
-                    <MonthlyEarnings/>
-                    <Inbox/>
-                    <div className='row'>
-                        <LatestTransactions/>
-                        <LatestOrders/>
+                    <div className='container-fluid'>
+                        <div className='row'>
+                            <TotalOrders />
+
+                            <AveragePrice/>
+
+                        </div>
+                        <MonthlyEarnings/>
+                        <div className='row'>
+                            <Inbox/>
+
+
+                        </div>
+                        <div className='row'>
+                            <LatestTransactions/>
+                            <LatestOrders/>
+                        </div>
                     </div>
                     <Footer/>
                 </div>

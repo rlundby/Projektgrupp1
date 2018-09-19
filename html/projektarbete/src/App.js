@@ -10,20 +10,26 @@ import Login from './components/authentication';
 class App extends Component {
     constructor(props) {
         super(props);
-        let auth = sessionStorage.getItem('auth');
-        if(auth) {
-            this.setState({auth: sessionStorage.setItem('auth', auth)})
-        } else {
-            this.state = {
-                auth: false
-            }
+        this.state = {
+            auth: false,
+            activeUser: {}
         }
     }
 
+    componentDidMount() {
+        let auth = sessionStorage.getItem('auth');
+        if(auth) {
+            this.setState({auth: sessionStorage.setItem('auth', auth)})
+        }
+    }
 
-    handleChange = (bool) => {
-        sessionStorage.setItem('auth', bool)
+    handleAuthChange = (bool) => {
+        sessionStorage.setItem('auth', bool);
         this.setState({auth: bool})
+    };
+
+    handleUserChange = user => {
+        this.setState({ activeUser: user})
     };
 
 
@@ -33,7 +39,7 @@ class App extends Component {
           <Route exact path='/' render={(props) =>(
               <Main {...props} data={this.state}/> )}/>
           <Route path='/login' render={(props) =>(
-              <Login {...props} data={this.state} setAuth={this.handleChange}/> )}/>
+              <Login {...props} data={this.state} setAuth={this.handleAuthChange} activeUser={this.handleUserChange}/> )}/>
       </Switch>
     );
   }
