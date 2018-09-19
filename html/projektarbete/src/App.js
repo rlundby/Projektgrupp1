@@ -15,12 +15,11 @@ class App extends Component {
             this.setState({auth: sessionStorage.setItem('auth', auth)})
         } else {
             this.state = {
-                auth: false // hämta från session sessionStorage.getItem(auth) ? : sessionStorage.setItem(auth)
+                auth: false
             }
         }
     }
 
-    // on signOut -> sessionStorage.removeItem('auth')
 
     handleChange = (bool) => {
         sessionStorage.setItem('auth', bool)

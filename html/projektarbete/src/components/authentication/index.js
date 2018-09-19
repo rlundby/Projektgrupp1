@@ -16,7 +16,7 @@ class Login extends React.Component {
 
     handleSignInSubmit(event) {
         event.preventDefault();
-        console.log(this.props.data)
+
 
         fetch('http://localhost:3001/api/signin',
             {
@@ -53,10 +53,8 @@ class Login extends React.Component {
             })
             .then(response => response.json())
             .then((result) => {
-                console.log('signup: ', result, 'state?', this.state)
-            })
-            .then(() => {
-                this.setState({username: '', password: ''});
+                this.setState({username: '', email: '', password: ''});
+                document.getElementById('userWasCreated').innerText = result.message;
             })
             .catch(err => console.log('err', err))
 
@@ -85,17 +83,18 @@ class Login extends React.Component {
                             <div className="form-group">
                                 <label htmlFor="email">Email address</label>
                                 <input type="email" className="form-control" name="email"
-                                       placeholder="name@example.com" onChange={this.handleChange}/>
+                                       placeholder="name@example.com" value={this.state.email} onChange={this.handleChange}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
-                                <input type="text" className="form-control" name="username" onChange={this.handleChange}/>
+                                <input type="text" className="form-control" value={this.state.username} name="username" onChange={this.handleChange}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password">Choose Password</label>
-                                <input type="password" className="form-control" name="password" onChange={this.handleChange} />
+                                <input type="password" className="form-control" value={this.state.password} name="password" onChange={this.handleChange} />
                             </div>
                             <button type="button" onClick={this.handleSignUpSubmit} className='btn btn-primary'>Sign Up</button>
+                            <h4 id='userWasCreated'></h4>
                         </form>
 
                         <form className='tab-pane' id='signin'>
