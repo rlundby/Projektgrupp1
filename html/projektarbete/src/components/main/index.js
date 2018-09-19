@@ -17,7 +17,7 @@ class Main extends React.Component {
 
 
     render() {
-        console.log('props i main:', this.props)
+
         let auth = sessionStorage.getItem('auth');
         if(!auth) {
             return <Redirect to="/login" />

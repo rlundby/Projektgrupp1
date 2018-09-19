@@ -43,7 +43,7 @@ exports.signIn = (req, res) => {
         })
         .catch(err => {
             console.log('error: ', err);
-            res.status(500).json({error: err})
+            res.status(500).json({error: err, message: "Something went wrong"})
         })
 };
 

@@ -29,11 +29,14 @@ class Login extends React.Component {
             })
             .then(response => response.json())
             .then((user) => {
-                this.props.setAuth(true);
-                console.log('inloggad:', user);
-                this.props.activeUser(user);
-                this.setState({username: '', password: ''});
-
+                console.log('signin user:', user)
+                if(!user.token){
+                    return document.getElementById('message').innerText = user.message
+                } else if(user.token) {
+                    this.props.setAuth(true);
+                    this.props.activeUser(user);
+                    this.setState({username: '', password: ''});
+                }
             })
             .catch(err => console.log('err', err))
 
@@ -74,6 +77,7 @@ class Login extends React.Component {
         return (
             <div id='body' className='justify-content-center'>
                 <div id='formContainer' className='loginContainer d-inline-flex flex-column justify-content-center'>
+                    <img src='assets/images/logo.png' alt className='logo-small w-50 mb-3' />
                     <ul className='nav nav-tabs'>
                         <li className='nav-item'><a className='nav-link active' data-toggle="tab" href="#signup">Sign Up </a></li>
                         <li className='nav-item'><a className='nav-link' data-toggle="tab" href="#signin">Sign In </a></li>
@@ -109,6 +113,7 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" name="password" onChange={this.handleChange}/>
                             </div>
                             <button type="button" onClick={this.handleSignInSubmit} className='btn btn-primary'>Sign In</button>
+                            <h4 id='message'></h4>
                         </form>
                     </div>
                 </div>

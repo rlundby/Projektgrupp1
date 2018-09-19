@@ -10,26 +10,26 @@ import Login from './components/authentication';
 class App extends Component {
     constructor(props) {
         super(props);
-        let auth = sessionStorage.getItem('auth');
-        if(auth) {
-            this.setState({auth: sessionStorage.setItem('auth', auth)})
-        } else {
-            this.state = {
-                auth: false,
-                activeUser: {}
-            }
+        this.state = {
+            auth: false,
+            activeUser: {}
         }
     }
 
+    componentDidMount() {
+        let auth = sessionStorage.getItem('auth');
+        if(auth) {
+            this.setState({auth: sessionStorage.setItem('auth', auth)})
+        }
+    }
 
     handleAuthChange = (bool) => {
-        sessionStorage.setItem('auth', bool)
+        sessionStorage.setItem('auth', bool);
         this.setState({auth: bool})
     };
 
     handleUserChange = user => {
         this.setState({ activeUser: user})
-        console.log('state, inloggad?', this.state.activeUser)
     };
 
 
