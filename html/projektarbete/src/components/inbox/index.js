@@ -6,9 +6,6 @@ export default class Inbox extends React.Component {
         messages: null
     };
 
-// todo: tester
-
-
 
     componentDidMount() {
         fetch('http://localhost:3001/api/messages')
