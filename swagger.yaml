@@ -133,7 +133,68 @@ paths:
           description: 'Successfully got the total amount of orders'
         '500':
           description: 'Failed to get orders'
-          
+
+  /messages:
+    get:
+      tags:
+        - Messages
+      summary: 'Gets the 6 latest messages'
+      description:
+        'This will return the 6 latest messages from the database.'
+      operationId: getLatestMessages
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 'Successfully got the messages'
+        '500':
+          description: 'Failed to get messages'
+
+  /signup:
+    post:
+      tags:
+        - User
+      summary: 'Sign up new user'
+      description:
+        'This will save the new user to the database.'
+      operationId: signup
+      parameters:
+        - in: body
+          name: body
+          description: Create a new user with the body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: 'Successfully created user'
+        '500':
+          description: 'Failed to create user'
+  /signin:
+    post:
+      tags:
+        - User
+      summary: 'Sign in user'
+      description:
+        'This will give the user authentication to enter our site, if the user exists in the database and enters correct username and password'
+      operationId: signin
+      parameters:
+        - in: body
+          name: body
+          description: Sign in user with the body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 'Successfully signed in user'
+        '500':
+          description: 'Failed to sign in user'
+
 definitions:
   User:
     type: object

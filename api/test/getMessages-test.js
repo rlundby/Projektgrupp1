@@ -3,9 +3,6 @@ const expect = require('chai').expect;
 const request = require('supertest')("http://localhost:3001/api/messages");
 
 
-//todo   lägg till test som fångar upp om token saknas
-
-
 
 describe('GET /messages, returns correct status codes', () => {
 
