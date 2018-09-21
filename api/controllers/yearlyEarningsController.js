@@ -5,8 +5,7 @@ exports.getYearlyEarnings = (req, res) => {
     Yearlyearnings.find()
         .exec()
         .then(earnings => {
-            console.log(earnings);
-            res.status(200).json({ earnings })
+            res.status(200).json( earnings )
         })
         .catch(error => {
             console.log(error);
