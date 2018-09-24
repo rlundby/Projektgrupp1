@@ -3,6 +3,7 @@ import {Fragment as F} from 'react';
 import './styles.css'
 import UsermenuProfile from "../header-usermenu-profile";
 import UsermenuSettings from "../header-usermenu-settings";
+import UsermenuWallet from "../header-usermenu-wallet";
 
 class UsermenuHub extends Component {
 
@@ -14,6 +15,9 @@ class UsermenuHub extends Component {
                 break;
             case('settings'):
                 component = <UsermenuSettings/>;
+                break;
+            case('wallet'):
+                component = <UsermenuWallet/>;
                 break;
             default:
                 component = <p> Could not be found</p>

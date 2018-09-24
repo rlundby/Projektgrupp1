@@ -57,8 +57,6 @@ class HeaderUsermenu extends Component {
                                 className="mdi mdi-wallet m-r-5"></i> My Wallet</button>
                             <button className="dropdown-item d-block" href={linkURL} onClick={() => this.menuClick('settings')}><i
                                 className="mdi mdi-settings m-r-5"></i> Settings</button>
-                            <button className="dropdown-item" href={linkURL} onClick={() => this.menuClick('lockscreen')}><i
-                                className="mdi mdi-lock-open-outline m-r-5"></i> Lock screen</button>
                             <div className="dropdown-divider"></div>
                             <a href={linkURL} className="dropdown-item text-danger" onClick={this.handleSignOut}><i
                                 className="mdi mdi-power text-danger"></i> Logout</a>
