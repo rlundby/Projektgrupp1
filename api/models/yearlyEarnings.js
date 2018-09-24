@@ -5,6 +5,7 @@ const yearlyearningsSchema = db.Schema({
     year: { type: Number, required: true },
     download: { type: Number, required: true },
     instore: { type: Number, required: true },
+    total: { type: Number }
 });
 
 module.exports = db.model('Yearlyearnings', yearlyearningsSchema);

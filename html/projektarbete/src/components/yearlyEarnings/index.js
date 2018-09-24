@@ -5,16 +5,24 @@ import StackedChart from "../stackedChart";
 class YearlyEarnings extends Component {
 
     state = {
-        
+        total: null,
+        tax: null
     }
 
-    componenDidMount() {
-        
-
+    componentDidMount() {
+        fetch('http://localhost:3001/api/get-yearly-earnings-total')
+        .then(response => response.json())
+        .then(result => {
+            console.log('result', result)
+            this.setState({
+                total: result.total,
+                tax: result.tax
+            })
+        });
     }
 
     render() {
-
+    
         return (
             <div className="col-xl-3">
             <div className="card m-b-20">
@@ -23,12 +31,12 @@ class YearlyEarnings extends Component {
 
                     <div className="row text-center m-t-20">
                         <div className="col-6">
-                            <h5 className="">$ 2548</h5>
-                            <p className="text-muted ">Marketplace</p>
+                            <h5 className="">$ {this.state.total}</h5>
+                            <p className="text-muted ">Total Income</p>
                         </div>
                         <div className="col-6">
-                            <h5 className="">$ 6985</h5>
-                            <p className="text-muted ">Total Income</p>
+                            <h5 className="">$ {this.state.tax}</h5>
+                            <p className="text-muted ">Tax</p>
                         </div>
                     </div>
 
