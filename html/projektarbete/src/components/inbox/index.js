@@ -3,21 +3,36 @@ import Message from './message';
 
 export default class Inbox extends React.Component {
     state = {
-        messages: null
+        messages: null,
+        token: sessionStorage.getItem('auth')
     };
 
 
     componentDidMount() {
-        fetch('http://localhost:3001/api/messages')
-            .then(result => result.json())
+        // skickar med token i headers för att få tillgång till messages
+        fetch('http://localhost:3001/api/messages', {
+                headers: {
+                    'Authorization': this.state.token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then(result => {
+                if (result.status === 401) {
+                    throw new Error('Unauthorized')
+                }
+                return result.json()
+            })
             .then(messages => {
                 this.setState({messages})
+
             })
             .catch(err => console.log('error from inbox: ', err))
     }
 
     render() {
-        if (!this.state.messages) {
+        if (this.state.messages === null) {
             return (
                 <div>No messages found</div>
             )

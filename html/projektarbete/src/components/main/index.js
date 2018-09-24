@@ -15,15 +15,15 @@ import Header from "../header";
 
 class Main extends React.Component {
 
-
     render() {
-
+        // om användaren inte har ett giltigt token, skicka tillbaka till login-sidan
         let auth = sessionStorage.getItem('auth');
         if(!auth) {
             return <Redirect to="/login" />
         }
 
         return (
+
             <div className="App">
 
                 <Header/>
@@ -37,7 +37,7 @@ class Main extends React.Component {
                         </div>
                         <MonthlyEarnings/>
                         <div className='row'>
-                            <Inbox/>
+                            <Inbox />
 
 
                         </div>
