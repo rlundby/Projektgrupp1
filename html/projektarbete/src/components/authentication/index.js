@@ -34,6 +34,7 @@ class Login extends React.Component {
                     return document.getElementById('message').innerText = user.message
                 } else if(user.token) {
                     this.props.setAuth(user.token);
+                    sessionStorage.setItem('user', JSON.stringify(user));
                     this.setState({username: '', password: ''});
                 }
             })
