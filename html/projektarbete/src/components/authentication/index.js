@@ -33,8 +33,7 @@ class Login extends React.Component {
                 if(!user.token){
                     return document.getElementById('message').innerText = user.message
                 } else if(user.token) {
-                    this.props.setAuth(true);
-                    this.props.activeUser(user);
+                    this.props.setAuth(user.token);
                     this.setState({username: '', password: ''});
                 }
             })
@@ -77,7 +76,7 @@ class Login extends React.Component {
         return (
             <div id='body' className='justify-content-center'>
                 <div id='formContainer' className='loginContainer d-inline-flex flex-column justify-content-center'>
-                    <img src='assets/images/logo.png' alt className='logo-small w-50 mb-3' />
+                    <img src='assets/images/logo.png' alt="logo" className='logo-small w-50 mb-3' />
                     <ul className='nav nav-tabs'>
                         <li className='nav-item'><a className='nav-link active' data-toggle="tab" href="#signup">Sign Up </a></li>
                         <li className='nav-item'><a className='nav-link' data-toggle="tab" href="#signin">Sign In </a></li>
@@ -99,7 +98,7 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" value={this.state.password} name="password" onChange={this.handleChange} />
                             </div>
                             <button type="button" onClick={this.handleSignUpSubmit} className='btn btn-primary'>Sign Up</button>
-                            <h4 id='userWasCreated'></h4>
+                            <p id='userWasCreated'></p>
                         </form>
 
                         <form className='tab-pane' id='signin'>
@@ -113,7 +112,7 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" name="password" onChange={this.handleChange}/>
                             </div>
                             <button type="button" onClick={this.handleSignInSubmit} className='btn btn-primary'>Sign In</button>
-                            <h4 id='message'></h4>
+                            <p id='message'></p>
                         </form>
                     </div>
                 </div>
