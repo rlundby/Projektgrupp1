@@ -1,9 +1,6 @@
-
 const encrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
-// const checkAuth = require('../auth/check-auth');
 
 const User = require('../models/user');
 
