@@ -20,7 +20,7 @@ class UsermenuProfile extends Component {
                         </div>
                         <div className="col-md-8 col-sm-6 col-xs-12 personal-info">
                             <h3>Personal info</h3>
-                            <form className="form-horizontal" role="form">
+                            <form className="form-horizontal">
                                 <div className="row">
                                     <div className="form-group col-lg-6">
                                         <label className="control-label">Email:</label>
