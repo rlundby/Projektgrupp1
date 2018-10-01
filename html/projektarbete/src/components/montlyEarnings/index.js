@@ -9,9 +9,22 @@ class MonthlyEarnings extends Component {
         lastMonth: null
     };
 
+    // Get the monthly earnings for the selected month.
+    // Right now the current month is hard coded
     componentDidMount() {
-        fetch('http://localhost:3001/api/get-monthly-earnings')
-            .then(response => response.json())
+        fetch('http://localhost:3001/api/get-monthly-earnings', {
+            headers: {
+                'Authorization': sessionStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    throw new Error('Unauthorized')
+                }
+                return response.json()
+            })
             .then(earnings => {
                 for(let earning of earnings.earnings) {
                     this.setState(prevState => ({
