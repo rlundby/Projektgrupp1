@@ -29,7 +29,6 @@ class Login extends React.Component {
             })
             .then(response => response.json())
             .then((user) => {
-                console.log('signin user:', user)
                 if(!user.token){
                     return document.getElementById('message').innerText = user.message
                 } else if(user.token) {
