@@ -15,7 +15,7 @@ class LatestTransactions extends Component {
         fetch('http://localhost:3001/api/transactions')
             .then(response => response.json())
             .then(transactions => {
-                this.setState({ transactions: transactions.reverse() });
+                this.setState({ transactions });
             });
     }
 

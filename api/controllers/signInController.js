@@ -31,7 +31,7 @@ exports.signIn = (req, res) => {
                             },
                             process.env.PRIVATE_SECRET_KEY,
                             {
-                                expiresIn: '1h'
+                                expiresIn: '24h'
                             }
                         );
                         return res.status(200).json({ message: 'Authentication was successful', userId: user[0]._id, username: req.body.username, token: token})

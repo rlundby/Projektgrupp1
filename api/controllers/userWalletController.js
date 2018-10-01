@@ -2,9 +2,9 @@ const db = require('mongoose');
 const Wallet = require('../models/wallet');
 
 exports.getUserWallet = (req, res) => {
-    Wallet.find()
+    Wallet.findOne({userid: req.params.id})
         .exec()
-        .then()
+        .then(user => res.status(200).json(user))
         .catch(error => {
             console.log(error);
             res.status(500).json({ error })
