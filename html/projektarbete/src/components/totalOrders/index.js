@@ -8,8 +8,19 @@ class TotalOrders extends Component {
     };
 
     componentDidMount() {
-        fetch('http://localhost:3001/api/get-total-orders')
-            .then(response => response.json())
+        fetch('http://localhost:3001/api/get-total-orders', {
+            headers: {
+                'Authorization':  sessionStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(result => {
+                if (result.status === 401) {
+                    throw new Error('Unauthorized')
+                }
+                return result.json()
+            })
             .then(orders => {
                 this.setState({ 
                     orders,

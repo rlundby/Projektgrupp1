@@ -7,13 +7,19 @@ class YearlyEarnings extends Component {
     state = {
         total: null,
         tax: null
-    }
+    };
 
     componentDidMount() {
-        fetch('http://localhost:3001/api/get-yearly-earnings-total')
+        fetch('http://localhost:3001/api/get-yearly-earnings-total', {
+            headers: {
+                'Authorization': sessionStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
         .then(response => response.json())
         .then(result => {
-            console.log('result', result)
+            console.log('result', result);
             this.setState({
                 total: result.total,
                 tax: result.tax

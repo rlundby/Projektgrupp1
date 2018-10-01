@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as ReactDOM from "react-dom";
 
-
 /* global $ */
 /* global Morris */
 
@@ -9,17 +8,28 @@ class StackedChart extends Component {
 
 
         state = {
-            earnigs: null,
+            earnings: null,
             stackedData: [],
         };
 
     componentDidMount() {
 
-        fetch('http://localhost:3001/api/get-yearly-earnings')
-            .then(response => response.json())
+        fetch('http://localhost:3001/api/get-yearly-earnings', {
+            headers: {
+                'Authorization':  sessionStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(result => {
+                if (result.status === 401) {
+                    throw new Error('Unauthorized')
+                }
+                return result.json()
+            })
             .then(items => {
                 this.setState({
-                    earnigs: items,
+                    earnings: items,
                    stackedData: items.map(item => {
                        return {
                            year: item.year,
