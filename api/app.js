@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 
 // Routes
 
+const yearlyGraphRoute = require('./routes/getYearlyGraph');
 const yearlyRoute = require('./routes/getYearly');
 const transactionRoute = require('./routes/getLatestTransactions');
 const addTransactionRoute = require('./routes/addTransactions');
@@ -36,7 +37,7 @@ const signUpRoute = require('./routes/signUp');
 const walletRoute = require('./routes/getUserWallet');
 const solditemsRoute = require('./routes/getSoldItems');
 
-
+app.use('/api/yearlygraph', yearlyGraphRoute);
 app.use('/api/yearly', yearlyRoute);
 app.use('/api/update-transaction', updateTransactionRoute);
 app.use('/api/transactions',transactionRoute );

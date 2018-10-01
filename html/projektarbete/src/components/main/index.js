@@ -6,6 +6,7 @@ import Footer from "../footer";
 import MonthlyEarnings from "../montlyEarnings";
 import TotalOrders from '../totalOrders';
 import LatestOrders from '../latestOrders';
+import Yearly from '../yearly';
 
 import Inbox from '../inbox';
 import Header from "../header";
@@ -28,6 +29,7 @@ class Main extends React.Component {
                 <div className="wrapper">
                     <TotalOrders />
                     <MonthlyEarnings/>
+                    <Yearly/>
                     <Inbox/>
                     <div className='row'>
                         <LatestTransactions/>
