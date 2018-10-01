@@ -28,6 +28,8 @@ const productRoute = require('./routes/getProducts');
 const getEarningsRoute = require('./routes/getEarnings');
 const messageRoute = require('./routes/getMessages');
 const walletRoute = require('./routes/getUserWallet');
+const recentActivityRoute = require('./routes/getRecentActivityFeed');
+const addUserActionRoute = require('./routes/addUserAction');
 
 app.use('/api/update-transaction', updateTransactionRoute);
 app.use('/api/transactions',transactionRoute );
@@ -36,6 +38,8 @@ app.use('/api/products', productRoute);
 app.use('/api/get-monthly-earnings', getEarningsRoute);
 app.use('/api/messages', messageRoute);
 app.use('/api/user-wallet', walletRoute);
+app.use('/api/recent-activity', recentActivityRoute);
+app.use('/api/addUserAction', addUserActionRoute);
 
 // Export
 module.exports = app;
