@@ -194,6 +194,21 @@ paths:
           description: 'Successfully signed in user'
         '500':
           description: 'Failed to sign in user'
+  /testimonials:
+      get:
+        tags:
+          - Testimonials
+        summary: 'Gets one randomized testimonial'
+        description:
+          'This will return one testimonial'
+        operationId: getTestimonial
+        produces:
+          - application/json
+        responses:
+          '200':
+            description: 'Successfully got testimonial'
+          '500':
+            description: 'Failed to get testimonials'
 
 definitions:
   User:
@@ -312,3 +327,15 @@ definitions:
       totalcost:
         type: integer
         format: int32
+  Testimonial:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        quote:
+          type: string
+        jobTitle:
+          type: string
