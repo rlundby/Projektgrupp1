@@ -21,7 +21,6 @@ export default class Testimonial extends React.Component {
                     return result.json()
                 })
                 .then(testimonial => {
-                    console.log('tetimon:', testimonial)
                     this.setState({testimonial})
 
                 })
