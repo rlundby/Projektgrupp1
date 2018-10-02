@@ -74,17 +74,22 @@ paths:
     put:
       tags:
         - Transaction
-      summary: Gets the 5 latest transactions
+      summary: Update a transaction
       description: >-
         This will update the transaction with the id you put in the path. Make
         sure to use the ID for the transaction which is returned from the get.
       operationId: updateTransaction
       parameters:
         - in: path
-          name: userId
+          name: TransactionId
           type: integer
           required: true
           description: Numeric ID of which transaction to update.
+        - in: body
+          name: transaction
+          description: The transaction body to update with.
+          schema:
+            $ref: "#/definitions/Transaction"
       produces:
         - application/json
         - application/xml
