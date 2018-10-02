@@ -1,6 +1,7 @@
 const db = require('mongoose');
 const Order = require('../models/order');
 
+
 exports.getLatestOrders = (req, res) => {
     Order.find()
         .exec()
