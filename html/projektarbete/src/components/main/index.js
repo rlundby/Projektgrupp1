@@ -10,6 +10,7 @@ import AveragePrice from '../averagePrice';
 import Testimonial from '../testimonial';
 import Inbox from '../inbox';
 import Header from "../header";
+import YearlyEarnings from '../yearlyEarnings';
 
 
 
@@ -35,7 +36,10 @@ class Main extends React.Component {
                             <AveragePrice/>
 
                         </div>
-                        <MonthlyEarnings/>
+                        <div className='row'>
+                            <MonthlyEarnings/>
+                            <YearlyEarnings />
+                        </div>
                         <div className='row'>
                             <Inbox />
 
