@@ -40,9 +40,13 @@ paths:
       produces:
         - application/json
         - application/xml
+      security:
+          - APIKeyHeader: []
       responses:
         '200':
           description: Transaction successfully added
+        '401':
+          description: 'API key is missing'
         '500':
           description: Failed to add transaction
   /transactions:
@@ -57,9 +61,13 @@ paths:
       produces:
         - application/json
         - application/xml
+      security:
+          - APIKeyHeader: []
       responses:
         '200':
           description: Successfully got the transations
+        '401':
+          description: 'API key is missing'
         '500':
           description: Failed to get transactions
   /update-transactions:
@@ -80,9 +88,13 @@ paths:
       produces:
         - application/json
         - application/xml
+      security:
+          - APIKeyHeader: []
       responses:
         '200':
           description: Successfully got the transations
+        '401':
+          description: 'API key is missing'
         '500':
           description: Failed to get transactions
   /sold-items:
@@ -97,11 +109,15 @@ paths:
       produces:
         - application/json
         - application/xml
+      security:
+          - APIKeyHeader: []
       responses:
         '200':
           description: Got sold items
           schema:
             $ref: '#/definitions/SoldItem'
+        '401':
+          description: 'API key is missing'
         '500':
           description: Failed to get sold items
   /get-latest-orders:
@@ -114,9 +130,13 @@ paths:
       operationId: getLatestOrders
       produces:
         - application/json
+      security:
+          - APIKeyHeader: []
       responses:
         '200':
           description: 'Successfully got the orders'
+        '401':
+          description: 'API key is missing'
         '500':
           description: 'Failed to get orders'
   /get-total-orders:
@@ -128,9 +148,13 @@ paths:
       operationId: getTotalOrders
       produces:
         - application/json
+      security:
+          - APIKeyHeader: []
       responses:
         '200':
           description: 'Successfully got the total amount of orders'
+        '401':
+          description: 'API key is missing'
         '500':
           description: 'Failed to get orders'
 
@@ -144,9 +168,13 @@ paths:
       operationId: getLatestMessages
       produces:
         - application/json
+      security:
+          - APIKeyHeader: []
       responses:
         '200':
           description: 'Successfully got the messages'
+        '401':
+          description: 'API key is missing'
         '500':
           description: 'Failed to get messages'
   /yearly:
@@ -159,9 +187,13 @@ paths:
       operationId: getYearly
       produces:
       - application/json
+      security:
+          - APIKeyHeader: []
       responses:
         '200':
           description: 'successfully recived the data'
+        '401':
+          description: 'API key is missing'
         '500':
           description: 'Failed to get data'
   /yearlyGraph:
@@ -174,9 +206,13 @@ paths:
       operationId: getYearlyGraph
       produces:
       - application/json
+      security:
+          - APIKeyHeader: []
       responses:
         '200':
           description: 'successfully recived the data'
+        '401':
+          description: 'API key is missing'
         '500':
           description: 'Failed to get data'
 
@@ -234,11 +270,21 @@ paths:
         operationId: getTestimonial
         produces:
           - application/json
+        security:
+          - APIKeyHeader: []
         responses:
           '200':
             description: 'Successfully got testimonial'
+          '401':
+            description: "API key is missing"
           '500':
             description: 'Failed to get testimonials'
+
+securityDefinitions:
+  APIKeyHeader:
+    type: apiKey
+    in: header
+    name: X-API-KEY
 
 definitions:
   User:
