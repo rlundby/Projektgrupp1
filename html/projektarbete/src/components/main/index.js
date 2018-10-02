@@ -25,6 +25,7 @@ class Main extends React.Component {
         }
 
         return (
+
             <div className="App">
 
                 <Header/>
@@ -40,7 +41,7 @@ class Main extends React.Component {
 
                         <div className='row'>
                             <MonthlyEarnings/>
-                            <Yearly/> 
+                            <Yearly/>
                             <YearlyEarnings />
                         </div>
 
@@ -49,13 +50,13 @@ class Main extends React.Component {
 
                             <Testimonial />
                         </div>
-                        
+
                         <div className='row'>
                             <LatestTransactions/>
                             <LatestOrders/>
                         </div>
                     </div>
-                </div>
+                    </div>
 
                 <Footer/>
 

@@ -19,7 +19,7 @@ class App extends Component {
     componentDidMount() {
         // kolla om användaren redan har en token i session
         let auth = sessionStorage.getItem('auth');
-        if(auth) {
+        if (auth) {
             this.setState({auth: sessionStorage.setItem('auth', auth)})
         }
     }
@@ -30,17 +30,17 @@ class App extends Component {
         this.setState({auth: token})
     };
 
-        // skicka med token till Main-komponenten
-  render() {
-    return (
-      <Switch>
-          <Route exact path='/' render={(props) =>(
-              <Main {...props} data={this.state}/> )}/>
-          <Route path='/login' render={(props) =>(
-              <Login {...props} data={this.state} setAuth={this.handleAuthChange} /> )}/>
-      </Switch>
-    );
-  }
+    // skicka med token till Main-komponenten
+    render() {
+        return (
+            <Switch>
+                <Route exact path='/' render={(props) => (
+                    <Main {...props} data={this.state}/>)}/>
+                <Route path='/login' render={(props) => (
+                    <Login {...props} data={this.state} setAuth={this.handleAuthChange}/>)}/>
+            </Switch>
+        );
+    }
 }
 
 
