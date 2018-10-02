@@ -1,6 +1,6 @@
 const request = require('supertest')("http://localhost:3001/api");
 
-describe('Checks getProducts API', function(){
+describe('Checks getYearlyEarnigs API', function(){
 
     let token = null;
 
@@ -14,8 +14,8 @@ describe('Checks getProducts API', function(){
             });
     });
 
-    it('Function getProducts should return 200 OK', function(done) {
-         request.get('/products')
+    it('Function getYearlyEarnings should return 200 OK', function(done) {
+         request.get('/get-yearly-earnings')
             .set('Authorization', token)
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')
@@ -23,8 +23,8 @@ describe('Checks getProducts API', function(){
             .expect(200, done)
     });
 
-    it('Function getProducts should return an array', function(done) {
-        request.get('/products')
+    it('Function getYearlyEarnings should return an array', function(done) {
+        request.get('/get-yearly-earnings')
             .set('Authorization', token)
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')

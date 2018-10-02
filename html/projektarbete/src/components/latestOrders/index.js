@@ -5,13 +5,14 @@ class TotalOrders extends Component {
 
     state = {
         orders: null,
-        isLoaded: false
+        isLoaded: false,
+        token: sessionStorage.getItem('auth')
     };
 
     componentDidMount() {
-        fetch('http://localhost:3001/api/get-latest-orders', {
+        fetch('http://localhost:3001/api/get-orders', {
             headers: {
-                'Authorization':  sessionStorage.getItem('auth'),
+                'Authorization':  this.state.token,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
@@ -23,8 +24,15 @@ class TotalOrders extends Component {
                 return result.json()
             })
             .then(orders => {
+
+                let latestOrders = []
+                for(let i = 0; i < 6; i++) {
+                    let last = orders.pop();
+                    latestOrders.push(last)
+                }
+
                 this.setState({
-                    orders,
+                    orders: latestOrders,
                     isLoaded: true
                 });
 
