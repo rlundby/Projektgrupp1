@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 const request = require('supertest')("http://localhost:3001/api");
 
 
-describe('GET messages API', () => {
+describe('GET testimonial API', () => {
 
     let token = null;
 
@@ -19,8 +19,8 @@ describe('GET messages API', () => {
     });
 
 
-    it('should return status 200 when getting messages from db successfully', (done) => {
-        request.get('/messages')
+    it('should return status 200 when getting testimonial from db successfully', (done) => {
+        request.get('/testimonials')
             .set('Authorization', token)
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')
@@ -42,7 +42,7 @@ describe('GET messages API', () => {
     });
 
     it('should return "unauthorized" if valid token is missing', (done) => {
-        request.get('/messages')
+        request.get('/testimonials')
             .set('Accept', 'application/json')
             .expect("Content-Type", /json/)
             .expect(401)
@@ -54,14 +54,14 @@ describe('GET messages API', () => {
     });
 
     it('should return an array', (done) => {
-        request.get('/messages')
+        request.get('/testimonials')
             .set('Authorization', token)
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')
             .expect("Content-Type", /json/)
             .expect(200)
             .end((err, res) => {
-                res.body.should.be.an('array');
+                res.body.should.be.an('object');
                 done()
             })
     })
