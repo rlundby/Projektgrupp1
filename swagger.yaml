@@ -12,7 +12,7 @@ info:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 basePath: /api/
-host: 'localhost:3000'
+host: 'localhost:3001'
 tags:
   - name: Transaction
     description: Endpoints relatade to transactions api
@@ -112,7 +112,7 @@ paths:
       description:
         'This will return the 6 latest orders from the database.'
       operationId: getLatestOrders
-      produces: 
+      produces:
         - application/json
       responses:
         '200':
@@ -126,7 +126,7 @@ paths:
       summary: 'Gets the total amount of orders'
       description: 'This will return a number that represents the total amount of orders'
       operationId: getTotalOrders
-      produces: 
+      produces:
         - application/json
       responses:
         '200':
@@ -154,10 +154,10 @@ paths:
       tags:
         - Email sent
       summary: 'Get all yearly income data.'
-      description: 
+      description:
         'This will return all income data by year.'
       operationId: getYearly
-      produces: 
+      produces:
       - application/json
       responses:
         '200':
@@ -169,17 +169,17 @@ paths:
       tags:
         - Graph data
       summary: 'Gets all yearly income statistics data'
-      description: 
+      description:
         'This will return all statistics data'
       operationId: getYearlyGraph
-      produces: 
+      produces:
       - application/json
       responses:
         '200':
           description: 'successfully recived the data'
         '500':
           description: 'Failed to get data'
-          
+
   /signup:
     post:
       tags:
@@ -213,10 +213,10 @@ paths:
       parameters:
         - in: body
           name: body
-          description: Sign in user with the body
+          description: Sign in user with username and password
           required: true
           schema:
-            $ref: '#/definitions/User'
+            $ref: '#/definitions/SigninUser'
       produces:
         - application/json
       responses:
@@ -256,6 +256,13 @@ definitions:
       created:
         type: string
       modified:
+        type: string
+  SigninUser:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
         type: string
   Product:
     type: object
@@ -309,7 +316,7 @@ definitions:
       id:
         type: integer
         format: int64
-      market: 
+      market:
         type: integer
         format: int32
       income:
@@ -327,7 +334,7 @@ definitions:
       id:
         type: integer
         format: int64
-      y: 
+      y:
         type: integer
         format: int32
       a:
@@ -338,7 +345,7 @@ definitions:
         format: int32
       c:
         type: integer
-        format: int32       
+        format: int32
   SoldItem:
     type: object
     properties:
@@ -377,7 +384,7 @@ definitions:
   Order:
     type: object
     properties:
-      id: 
+      id:
         type: integer
         format: int64
       date:
