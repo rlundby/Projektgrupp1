@@ -1,6 +1,7 @@
 const db = require('mongoose');
 const Transaction = require('../models/transaction');
 
+// Updates the selected transaction with new body
 exports.updateTransaction = (req, res) => {
    const id = req.params.id;
    const transaction = {

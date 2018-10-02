@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // Routes
-
+const testimonialRoute = require('./routes/testimonialRoute');
 const yearlyRoute = require('./routes/getYearly');
 const transactionRoute = require('./routes/getLatestTransactions');
 const addTransactionRoute = require('./routes/addTransactions');
@@ -39,6 +39,7 @@ const yearlyEarningsRoute = require('./routes/getYearlyEarnings');
 const yearlyEarningsTotalRoute = require('./routes/getYearlyEarningsTotal');
 
 
+app.use('/api/testimonials', testimonialRoute);
 app.use('/api/yearly', yearlyRoute);
 app.use('/api/update-transaction', updateTransactionRoute);
 app.use('/api/transactions',transactionRoute );

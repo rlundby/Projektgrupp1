@@ -8,9 +8,8 @@ exports.getLatestMessages = (req, res) => {
         .then(messages => {
 
             if(messages.length > 6){
-                messages.shift();
+                messages.pop();
                 res.status(200).json(messages);
-                console.log(messages)
             } else {
                 res.status(200).json(messages);
             }

@@ -7,7 +7,7 @@ import MonthlyEarnings from "../montlyEarnings";
 import TotalOrders from '../totalOrders';
 import LatestOrders from '../latestOrders';
 import AveragePrice from '../averagePrice';
-
+import Testimonial from '../testimonial';
 import Inbox from '../inbox';
 import Header from "../header";
 import YearlyEarnings from '../yearlyEarnings';
@@ -43,7 +43,7 @@ class Main extends React.Component {
                         <div className='row'>
                             <Inbox />
 
-
+                            <Testimonial />
                         </div>
                         <div className='row'>
                             <LatestTransactions/>
