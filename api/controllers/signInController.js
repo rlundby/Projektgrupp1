@@ -31,7 +31,7 @@ exports.signIn = (req, res) => {
                                 expiresIn: '24h'
                             }
                         );
-                        return res.status(200).json({ message: 'Authentication was successful', userId: user[0]._id, username: req.body.username, token: token})
+                        return res.status(200).json({ message: 'Authentication was successful', userId: user[0]._id, username: req.body.username, token: token, email: user[0].email})
                     }
 
                     res.status(401).json({ message: 'Username or password is incorrect or empty' })
