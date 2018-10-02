@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import OrderStatus from '../orderStatus';
 
 class TotalOrders extends Component {
 
@@ -53,7 +54,7 @@ class TotalOrders extends Component {
                                                 <td><img src={order.imgpath} alt="user"
                                                      className="thumb-sm mr-2 rounded-circle"/></td>
                                                 <td>{order.companyName}</td>
-                                                <td><span className="badge badge-pill badge-success">{order.status}</span>
+                                                <td><OrderStatus status={order.status} />
                                                 </td>
                                                 <td>${order.price}</td>
                                                 <td>{new Date(order.date).toISOString().split('T')[0]}</td>
