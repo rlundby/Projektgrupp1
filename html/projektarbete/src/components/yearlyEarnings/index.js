@@ -19,7 +19,6 @@ class YearlyEarnings extends Component {
         })
         .then(response => response.json())
         .then(result => {
-            console.log('result', result);
             this.setState({
                 total: result.total,
                 tax: result.tax
