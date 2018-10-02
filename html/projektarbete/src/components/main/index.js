@@ -25,18 +25,11 @@ class Main extends React.Component {
         }
 
         return (
-
             <div className="App">
 
                 <Header/>
-                <div className="wrapper">
-                    
-                    
 
-                   
-                    <div className='row'>
-                        <LatestTransactions/>
-                        <LatestOrders/>
+                <div className="wrapper">
                     <div className='container-fluid'>
                         <div className='row'>
                             <TotalOrders />
@@ -50,19 +43,22 @@ class Main extends React.Component {
                             <Yearly/> 
                             <YearlyEarnings />
                         </div>
+
                         <div className='row'>
                             <Inbox />
 
                             <Testimonial />
                         </div>
+                        
                         <div className='row'>
                             <LatestTransactions/>
                             <LatestOrders/>
                         </div>
                     </div>
-                    <Footer/>
                 </div>
-            </div>
+
+                <Footer/>
+
             </div>
         );
     }
