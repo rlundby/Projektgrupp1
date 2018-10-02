@@ -4,11 +4,18 @@ class AveragePrice extends Component {
 
     state = {
         avgPrice: null,
-        isLoaded: false
+        isLoaded: false,
+        token: sessionStorage.getItem('auth')
     };
 
     componentDidMount() {
-        fetch('http://localhost:3001/api/products')
+        fetch('http://localhost:3001/api/products', {
+            headers: {
+                'Authorization':  this.state.token,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                }
+            })
             .then(response => response.json())
             .then(products => {
 
