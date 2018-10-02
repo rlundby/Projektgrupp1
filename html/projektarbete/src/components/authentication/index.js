@@ -33,7 +33,7 @@ class Login extends React.Component {
                     return document.getElementById('message').innerText = user.message
                 } else if (user.token) {
                     sessionStorage.setItem('user', JSON.stringify(user));
-                    sessionStorage.setItem('auth', JSON.stringify(user.token));
+                    sessionStorage.setItem('auth', user.token);
                     this.setState({username: '', password: ''});
                 }
             })
