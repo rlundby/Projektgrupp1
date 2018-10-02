@@ -16,7 +16,7 @@ class Login extends React.Component {
 
     handleSignInSubmit(event) {
         event.preventDefault();
-        console.log(this.props.data)
+
 
         fetch('http://localhost:3001/api/signin',
             {
@@ -28,11 +28,14 @@ class Login extends React.Component {
                 body: JSON.stringify({username: this.state.username, password: this.state.password})
             })
             .then(response => response.json())
-            .then(() => {
-                this.props.setAuth(true);
-
-                this.setState({username: '', password: ''});
-
+            .then((user) => {
+                if(!user.token){
+                    return document.getElementById('message').innerText = user.message
+                } else if(user.token) {
+                    this.props.setAuth(user.token);
+                    sessionStorage.setItem('user', JSON.stringify(user));
+                    this.setState({username: '', password: ''});
+                }
             })
             .catch(err => console.log('err', err))
 
@@ -53,10 +56,8 @@ class Login extends React.Component {
             })
             .then(response => response.json())
             .then((result) => {
-                console.log('signup: ', result, 'state?', this.state)
-            })
-            .then(() => {
-                this.setState({username: '', password: ''});
+                this.setState({username: '', email: '', password: ''});
+                document.getElementById('userWasCreated').innerText = result.message;
             })
             .catch(err => console.log('err', err))
 
@@ -75,6 +76,7 @@ class Login extends React.Component {
         return (
             <div id='body' className='justify-content-center'>
                 <div id='formContainer' className='loginContainer d-inline-flex flex-column justify-content-center'>
+                    <img src='assets/images/logo.png' alt="logo" className='logo-small w-50 mb-3' />
                     <ul className='nav nav-tabs'>
                         <li className='nav-item'><a className='nav-link active' data-toggle="tab" href="#signup">Sign Up </a></li>
                         <li className='nav-item'><a className='nav-link' data-toggle="tab" href="#signin">Sign In </a></li>
@@ -85,17 +87,18 @@ class Login extends React.Component {
                             <div className="form-group">
                                 <label htmlFor="email">Email address</label>
                                 <input type="email" className="form-control" name="email"
-                                       placeholder="name@example.com" onChange={this.handleChange}/>
+                                       placeholder="name@example.com" value={this.state.email} onChange={this.handleChange}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
-                                <input type="text" className="form-control" name="username" onChange={this.handleChange}/>
+                                <input type="text" className="form-control" value={this.state.username} name="username" onChange={this.handleChange}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password">Choose Password</label>
-                                <input type="password" className="form-control" name="password" onChange={this.handleChange} />
+                                <input type="password" className="form-control" value={this.state.password} name="password" onChange={this.handleChange} />
                             </div>
                             <button type="button" onClick={this.handleSignUpSubmit} className='btn btn-primary'>Sign Up</button>
+                            <p id='userWasCreated'></p>
                         </form>
 
                         <form className='tab-pane' id='signin'>
@@ -109,6 +112,7 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" name="password" onChange={this.handleChange}/>
                             </div>
                             <button type="button" onClick={this.handleSignInSubmit} className='btn btn-primary'>Sign In</button>
+                            <p id='message'></p>
                         </form>
                     </div>
                 </div>

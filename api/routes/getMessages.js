@@ -1,10 +1,10 @@
 const route = require('express').Router();
-
+const checkAuth = require('../auth/check-auth');
 const messages = require('../controllers/messagesController.js');
 
 
 
-route.get('/', messages.getLatestMessages);
+route.get('/', checkAuth, messages.getLatestMessages);
 
 
 

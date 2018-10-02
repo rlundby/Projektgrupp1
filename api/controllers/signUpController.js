@@ -25,13 +25,12 @@ exports.signup = (req, res) => {
                         });
 
                         user.save()
-                            .then(result => {
+                            .then(() => {
                                 res.status(201).json({message: 'User was created'});
-                                console.log('result: ', result)
                             })
                             .catch(err => {
                                 console.log('error: ', err);
-                                res.status(500).json({error: err})
+                                res.status(500).json({error: err, message: "Something went wrong"})
                             })
                     }
                 })

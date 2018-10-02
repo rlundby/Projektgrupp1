@@ -1,13 +1,14 @@
 #formContainer {
-    margin: 2em;
-    padding: 2em;
+    margin: 4em 0;
+    padding: 3em;
     background: white;
     border: 2px solid #626262;
     border-radius: 5px;
+    height: auto;
 }
 
 #body {
-    height: 100vh;
+    height: auto;
     width: 100vw;
     display: flex;
     padding: 10em;

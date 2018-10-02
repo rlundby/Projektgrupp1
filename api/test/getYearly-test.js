@@ -4,13 +4,29 @@ const request = require('supertest')('http://localhost:3001/api/yearly');
 
 
 describe('"YEARLY" tests', () => {
+    let token = null;
+    before(function(done) {
+        request.post('/signin')                             //sign in before testing
+            .send({ username: 'admin', password: 'admin' })
+            .end(function(err, res) {
+                token = res.body.token;                     //save response
+                done();
+            });
+    });
+
     it('"YEARLY" test should return status 200 OK when the data is recived correctly.', function (done) {
         request.get('/')
+        .set('Authorization', token)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
         .expect(200, done)
     });
 
     it('"YEARLY" test should return an array', function(done) {
         request.get('/')
+        .set('Authorization', token)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
         .expect("Content-type", "/json/")
         .expect(200)
         .end(function(err,res){
@@ -20,6 +36,9 @@ describe('"YEARLY" tests', () => {
     });
     it('"YEARLY" test market should return a number', function(done) {
         request.get('/')
+        .set('Authorization', token)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
         .expect("Content-type", "/json/")
         .expect(200)
         .end(function(err,res){

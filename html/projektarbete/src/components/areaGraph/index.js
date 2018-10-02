@@ -13,7 +13,13 @@ class AreaGraph extends Component {
 
     componentDidMount() {
 
-        fetch('http://localhost:3001/api/yearlyGraph')
+        fetch('http://localhost:3001/api/yearlyGraph', {
+            headers: {
+                'Authorization': sessionStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
             .then(response => response.json())
             .then(values => {
                     this.setState({ 

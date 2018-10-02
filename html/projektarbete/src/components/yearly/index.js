@@ -10,7 +10,14 @@ class Yearly extends Component {
     };
 
     componentDidMount() {
-        fetch('http://localhost:3001/api/yearly')
+        fetch('http://localhost:3001/api/yearly', {
+            headers: {
+                'Authorization': sessionStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+        
             .then(response => response.json())
             .then(values => {
                 // console.log("values in componentDIDmount:    ",values.result) 
@@ -77,7 +84,6 @@ class Yearly extends Component {
                             </div>
                         </div>
                         <AreaGraph/>
-                        <div id="morris-area-example" className="dashboard-charts morris-charts"></div>
                     </div>
                 </div>
             </div>

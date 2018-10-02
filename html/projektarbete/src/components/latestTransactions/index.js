@@ -11,20 +11,45 @@ class LatestTransactions extends Component {
         currentTransaction: {},
     };
 
+    // On mount, get all transactions (if authorized)
     componentDidMount() {
-        fetch('http://localhost:3001/api/transactions')
-            .then(response => response.json())
+        fetch('http://localhost:3001/api/transactions', {
+            headers: {
+                'Authorization': sessionStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    throw new Error('Unauthorized')
+                }
+                return response.json()
+            })
             .then(transactions => {
-                this.setState({ transactions: transactions.reverse() });
+                this.setState({ transactions });
             });
     }
 
+    // When a transaction is updated, get the new ones.
     getUpdatedTransactions() {
-        fetch('http://localhost:3001/api/transactions')
-            .then(response => response.json())
+        fetch('http://localhost:3001/api/transactions', {
+            headers: {
+                'Authorization': sessionStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    throw new Error('Unauthorized')
+                }
+                return response.json()
+            })
             .then(transactions => this.setState({ transactions }));
     }
 
+    // When trying to edit - display a form
     handleEditToggle(transaction){
         console.log(transaction);
         this.setState({
@@ -33,6 +58,7 @@ class LatestTransactions extends Component {
         });
     }
 
+    // Handle the changes in the input fields
     handleChange = event => {
     let k = event.target.value;
     let n = event.target.name;
@@ -66,21 +92,30 @@ class LatestTransactions extends Component {
     }
     };
 
+    // Handles the submit updated transaction function
     handleSubmit (){
         this.updateTransaction();
     };
 
+    // Updates the selected transaction with the input in the edit form
     updateTransaction(){
         console.log('You are trying to update:');
         console.log(this.state.currentTransaction);
         fetch('http://localhost:3001/api/update-transaction/' + this.state.currentTransaction._id, {
             method: 'PUT',
             headers: {
+                'Authorization': sessionStorage.getItem('auth'),
                 'Accept': 'application/json, text/plain */*',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state.currentTransaction)
         })
+            .then(result => {
+                if (result.status === 401) {
+                    throw new Error('Unauthorized')
+                }
+                return result.json()
+            })
             .then((res) => {
                 console.log(res);
                 this.setState({

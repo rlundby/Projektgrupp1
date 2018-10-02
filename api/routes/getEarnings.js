@@ -1,9 +1,9 @@
 const route = require('express').Router();
 const earnings = require('../controllers/earningsController');
+const checkAuth = require('../auth/check-auth');
 
-// Get the latest transactions
-route.get('/', earnings.getMonthlyEarnings);
+// Get monthly earnings
+route.get('/', checkAuth, earnings.getMonthlyEarnings);
 
-//Unsecred routes
 
 module.exports = route;
