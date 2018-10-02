@@ -1,5 +1,5 @@
 const db = require('mongoose');
-const encrypt = require('bcrypt');
+const encrypt = require('bcrypt-nodejs');
 
 
 const User = require('../models/user');
