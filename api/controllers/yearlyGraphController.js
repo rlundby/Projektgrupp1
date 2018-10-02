@@ -1,7 +1,7 @@
 const db = require('mongoose');
-const model = require('../models/yearly.js')
+const model = require('../models/yearlygraph.js')
 
-exports.getYearly = (req, res) => {
+exports.getYearlyGraph = (req, res) => {
     model.find()
     .exec()
     .then(result => res.status(200).json({ result }))
