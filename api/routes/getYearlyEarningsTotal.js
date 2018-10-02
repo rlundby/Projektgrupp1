@@ -1,8 +1,8 @@
 const route = require('express').Router();
-const orders = require('../controllers/getLatestOrdersController');
+const earnings = require('../controllers/getYearlyEarningsTotalController');
 const checkAuth = require('../auth/check-auth');
 
 // Get sum of all products
-route.get('/', checkAuth, orders.getLatestOrders);
+route.get('/', checkAuth, earnings.getYearlyEarningsTotal);
 
 module.exports = route;
