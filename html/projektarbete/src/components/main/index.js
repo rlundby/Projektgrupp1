@@ -13,7 +13,9 @@ import Header from "../header";
 
 
 
+
 class Main extends React.Component {
+
 
     render() {
         // om användaren inte har ett giltigt token, skicka tillbaka till login-sidan
@@ -28,24 +30,26 @@ class Main extends React.Component {
 
                 <Header/>
                 <div className="wrapper">
-                    <div className='container-fluid'>
-                        <div className='row'>
-                            <TotalOrders />
 
-                            <AveragePrice/>
+                        <div className='container-fluid'>
+                            <div className='row'>
+                                <TotalOrders />
 
-                        </div>
-                        <MonthlyEarnings/>
-                        <div className='row'>
-                            <Inbox />
+                                <AveragePrice/>
 
-                            <Testimonial />
+                            </div>
+                            <MonthlyEarnings/>
+                            <div className='row'>
+                                <Inbox />
+
+                                <Testimonial />
+                            </div>
+                            <div className='row'>
+                                <LatestTransactions/>
+                                <LatestOrders/>
+                            </div>
                         </div>
-                        <div className='row'>
-                            <LatestTransactions/>
-                            <LatestOrders/>
-                        </div>
-                    </div>
+
                     <Footer/>
                 </div>
             </div>
