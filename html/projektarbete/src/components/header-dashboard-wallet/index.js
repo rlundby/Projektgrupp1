@@ -45,7 +45,7 @@ class HeaderDashboardWallet extends Component {
                             <SparklinesBars style={{ fill: "#40c0f5" }} />
                         </Sparklines>
                     </div>
-                    <div className="info">0, Item Sold, Balance in $</div>
+                    <div className="info"> Item Sold, Balance in $</div>
                 </div>
             </div>
 

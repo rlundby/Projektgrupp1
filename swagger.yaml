@@ -125,14 +125,14 @@ paths:
           description: 'API key is missing'
         '500':
           description: Failed to get sold items
-  /get-latest-orders:
+  /get-orders:
     get:
       tags:
         - Orders
-      summary: 'Gets the 6 latest orders'
+      summary: 'Gets the orders'
       description:
-        'This will return the 6 latest orders from the database.'
-      operationId: getLatestOrders
+        'This will return an array of orders from the database.'
+      operationId: getOrders
       produces:
         - application/json
       security:
