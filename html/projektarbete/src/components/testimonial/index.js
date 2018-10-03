@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment as F} from 'react';
 
 export default class Testimonial extends React.Component {
     state = {
@@ -30,7 +30,7 @@ export default class Testimonial extends React.Component {
 
     render() {
         return (
-            <div className='col-xl-4'>
+            <F>
                 {
                     this.state.isLoaded
                     ?
@@ -54,7 +54,7 @@ export default class Testimonial extends React.Component {
                     <h4>Loading...</h4>
 
                 }
-            </div>
+            </F>
         )
     }
 

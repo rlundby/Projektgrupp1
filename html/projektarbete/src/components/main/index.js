@@ -50,8 +50,11 @@ class Main extends React.Component {
                         <div className='row'>
                             <Inbox />
                             <RecentActivityLog />
-                            <YearlySales />
-                            <Testimonial />
+                            
+                            <div className="col-xl-4">
+                                <Testimonial />
+                                <YearlySales />
+                            </div>
                         </div>
 
                         <div className='row'>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Layout from './layout';
-import {Sparklines, SparklinesBars} from 'react-sparklines';
+
 
 export default class YearlySales extends Component {
 
@@ -34,15 +34,18 @@ export default class YearlySales extends Component {
                 <div className="card m-b-10">
                 <div className="card-body">
                     <h4 className="mt-0 header-title">Yearly Sales</h4>
+                    <h4>{this.state.yearlySales.totalSales}</h4>
                     <div className="row">
-                        <div className="col-md-4">
-                            {
+                    {
                                    this.state.yearlySales.map((yearly , i) => {
                                     return <Layout yearly={yearly} key={i} />
                                 })  
-                            }
+                        }
+                        <div className="col-md-4">
+                        <p className="text-muted">The languages only differ grammar</p>
+                        <a href="#" className="text-primary">Learn more <i className="mdi mdi-chevron-double-right"></i></a>
                         </div>
-
+                    
                     </div>
                 </div>
             </div>
