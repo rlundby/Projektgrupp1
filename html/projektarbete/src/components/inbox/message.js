@@ -10,7 +10,7 @@ export default ({data, index}) => {
                     <p className='mt-2 mb-0'>{new Date(data.created).toTimeString().substring(0, 5)}</p>
 
                 </div>
-                <p className='mb-0'>{data.content.length > 25 ? data.content.substring(0, 25)+"..." : data.content}</p>
+                <p className='mb-0 text-left'>{data.content.length > 25 ? data.content.substring(0, 25)+"..." : data.content}</p>
             </div>
         </div>
     )

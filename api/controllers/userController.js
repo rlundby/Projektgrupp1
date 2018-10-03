@@ -1,23 +1,20 @@
 const db = require('mongoose');
-const User = require('../models/user');
+const User = require('../models/userActivity');
 
 exports.addUserAction = (req, res) => {
     const userAction = new User ({
-        
-        name: req.body.name,
-        action: req.body.action,
+        _id: new db.Types.ObjectId(),
+        activity: req.body.activity,
+        created: req.body.created,
     })
 
     userAction.save()
-    .then(action => {
-        console.log(action);
+    .then(result => {
+        console.log(result);
         res.status(201).json({
-            message: "Product was created successfully.",
-            product: {
-               
-                name: action.name,
-                action: action.action,
-                created: action.created
+            action: {
+                activity: result.activity,
+                created: result.created
             }
         });
     })

@@ -1,0 +1,23 @@
+#formContainer {
+    margin: 4em 0;
+    padding: 3em;
+    background: white;
+    border: 2px solid #626262;
+    border-radius: 5px;
+    height: auto;
+}
+
+#body {
+    height: auto;
+    width: 100vw;
+    display: flex;
+    padding: 10em;
+}
+
+@media (max-width: 768px) {
+    #body {
+        padding: 2em;
+        width: auto;
+        height: auto;
+    }
+}

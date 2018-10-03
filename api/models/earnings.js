@@ -5,7 +5,7 @@ const earningsSchema = db.Schema({
     month: { type: Number, required: true },
     year: { type: Number, required: true },
     marketplace: { type: Number, required: true },
-    instore: { type: String, required: true },
+    instore: { type: Number, required: true },
     total: { type: Number, required: true }
 });
 

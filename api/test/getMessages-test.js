@@ -1,42 +1,66 @@
 const should = require('chai').should();
 const expect = require('chai').expect;
-const request = require('supertest')("http://localhost:3001/api/messages");
-
-
-//todo   lägg till test som fångar upp om token saknas
+const request = require('supertest')("http://localhost:3001/api");
 
 
 
-describe('GET /messages, returns correct status codes', () => {
+describe('GET messages API', () => {
+
+        let token = null;
+
+
+
+        // first, get token
+        before(function(done) {
+            request.post('/signin')
+                .send({ username: 'admin', password: 'admin' })
+                .end(function(err, res) {
+                    token = res.body.token;
+                    done();
+                });
+        });
+
 
     it('should return status 200 when getting messages from db successfully', (done) => {
-        request.get('/')
+        request.get('/messages')
+            .set('Authorization', token)
             .set('Accept', 'application/json')
+            .set('Content-Type', 'application/json')
             .expect("Content-Type", /json/)
             .expect(200, done)
     });
 
     it('should return "error" if not found from db', (done) => {
         request.get('/wrongEndpoint')
+            .set('Authorization', token)
             .set('Accept', 'application/json')
-            .expect("Content-Type", /json/)
-            .expect(500)
+            .set('Content-Type', 'application/json')
+            .expect(404)
             .end((err) => {
                 if (err) return done(err);
                 done();
             });
 
-    })
+    });
 
-});
+    it('should return "unauthorized" if valid token is missing', (done) => {
+        request.get('/messages')
+            .set('Accept', 'application/json')
+            .expect("Content-Type", /json/)
+            .expect(401)
+            .end((err) => {
+                if (err) return done("Unauthorized");
+                done();
+            });
 
-
-describe('GET /messages', () => {
+    });
 
     it('should return an array', (done) => {
-        request.get('/')
+        request.get('/messages')
+            .set('Authorization', token)
             .set('Accept', 'application/json')
-            .expect("Content-type", /json/)
+            .set('Content-Type', 'application/json')
+            .expect("Content-Type", /json/)
             .expect(200)
             .end((err, res) => {
                 res.body.should.be.an('array');
@@ -44,3 +68,5 @@ describe('GET /messages', () => {
             })
     })
 });
+
+

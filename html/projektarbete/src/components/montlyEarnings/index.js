@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DonutGraph from "../graph";
 
 class MonthlyEarnings extends Component {
 
@@ -47,7 +48,7 @@ class MonthlyEarnings extends Component {
                                     <p className="text-muted ">Total Income</p>
                                 </div>
                             </div>
-                            <div id="morris-donut-example" className="dashboard-charts morris-charts"></div>
+                            <DonutGraph/>
                         </div>
                     </div>
                 </div>

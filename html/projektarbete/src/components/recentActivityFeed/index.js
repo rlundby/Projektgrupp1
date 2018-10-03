@@ -12,7 +12,9 @@ export default class Log extends Component {
     componentDidMount() {
         fetch('http://localhost:3001/api/recent-activity')
             .then(response => response.json())
-            .then(data => { this.setState({ activityLogs: data.result }) })
+            .then(data => { this.setState({ activityLogs: data.result }) 
+            
+        })
             .catch(error => console.log('error from recent activity: ', error))
     };
 
@@ -33,15 +35,15 @@ export default class Log extends Component {
             return (
                 <div className={"col-xl-4 col-lg-6"} >
                     <div className={"card-body"}  >
-                        <div className={"card -0 "}>
-                            <h4 className={" header-title my-10"}> Recent Activity Feed </h4>
+                        <div className={"card"}>
+                            <h4 className={" header-title"}> Recent Activity Feed </h4>
                             {
                                 this.state.activityLogs.map((userActivity, i) => {
                                     return <Layout userActivity={userActivity} index={3} />
                                 })
                             }
                             <div className={"text-center"}>
-                                <button className={"btn btn-sm btn-primary mb-4"} onClick={this.onClickToReload}> Load more </button>
+                                <button className={"btn btn-sm btn-primary"} onClick={this.onClickToReload}> Load more </button>
                             </div>
                         </div>
                     </div >
