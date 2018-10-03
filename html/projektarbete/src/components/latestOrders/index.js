@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import OrderStatus from '../orderStatus';
 
-class TotalOrders extends Component {
+class LatestOrders extends Component {
 
     state = {
         orders: null,
@@ -88,4 +88,4 @@ class TotalOrders extends Component {
 }
 
 
-export default TotalOrders;
+export default LatestOrders;
