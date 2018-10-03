@@ -289,7 +289,7 @@ securityDefinitions:
   APIKeyHeader:
     type: apiKey
     in: header
-    name: X-API-KEY
+    name: Authorization
 
 definitions:
   User:
