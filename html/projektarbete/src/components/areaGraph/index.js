@@ -12,7 +12,6 @@ class AreaGraph extends Component {
      };
 
     componentDidMount() {
-
         fetch('http://localhost:3001/api/yearlyGraph', {
             headers: {
                 'Authorization': sessionStorage.getItem('auth'),
@@ -20,28 +19,30 @@ class AreaGraph extends Component {
                 'Content-Type': 'application/json',
             }
         })
-            .then(response => response.json())
-            .then(values => {
-                    this.setState({ 
-                        entries:values.result,
-                        data: values.result.map(value => {
-                            return {
-                                year: value.y,
-                                a: value.a,
-                                b: value.b,
-                                c: value.c
-                            }
-                        }) 
-                    })
-                    console.log(this.state)
-
-                    this.createAreaChart(
-                        $(ReactDOM.findDOMNode(this)),
-                        this.state.data,
-                        'year',
-                        ['a', 'b', 'c']
-                    )
-                });   
+        .then(response => {
+            if(response === 401){
+                throw new Error('Unauthorized')
+            }else return response.json()
+        })
+        .then(values => {
+                this.setState({ 
+                    entries:values.result,
+                    data: values.result.map(value => {
+                        return {
+                            year: value.y,
+                            a: value.a,
+                            b: value.b,
+                            c: value.c
+                        }
+                    }) 
+                })
+                  this.createAreaChart(
+                    $(ReactDOM.findDOMNode(this)),
+                    this.state.data,
+                    'year',
+                   ['a', 'b', 'c']
+                )
+            });   
         };
 
         createAreaChart = (element, data, xkey, ykeys)=> {

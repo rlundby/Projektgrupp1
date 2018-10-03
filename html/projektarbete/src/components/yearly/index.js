@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import AreaGraph from "../areaGraph";
 
-
 class Yearly extends Component {
 
     state = {
@@ -17,13 +16,14 @@ class Yearly extends Component {
                 'Content-Type': 'application/json',
             }
         })
-        
-            .then(response => response.json())
-            .then(values => {
-                // console.log("values in componentDIDmount:    ",values.result) 
-                this.setState(prevState => ({ entries:values.result}))
-                // console.log("STATE:      ",this.state)
-            });
+        .then(response => {
+            if(response === 401){
+                throw new Error('Unauthorized')
+            }else return response.json()
+        })
+        .then(values => {
+           this.setState(prevState => ({ entries:values.result}))
+       });
     }
     
     sumOfMarket(){
@@ -56,7 +56,6 @@ class Yearly extends Component {
         }else return "no values to show"
     }
 
-
     render() {
         if(!this.state) {
             return(
@@ -68,7 +67,6 @@ class Yearly extends Component {
                 <div className="card m-b-20">
                     <div className="card-body">
                         <h4 className="mt-0 header-title">Email Sent</h4>
-
                         <div className="row text-center m-t-20">
                             <div className="col-4">
                                 <h5 className="">{this.sumOfMarket()}</h5>
@@ -87,7 +85,6 @@ class Yearly extends Component {
                     </div>
                 </div>
             </div>
-                    
             );
         }   
     }
