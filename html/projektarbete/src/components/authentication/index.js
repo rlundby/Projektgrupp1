@@ -4,9 +4,9 @@ import './login.css';
 
 class Login extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = { username: '', email: '', password: ''};
+        this.state = {username: '', email: '', password: ''};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
@@ -29,12 +29,11 @@ class Login extends React.Component {
             })
             .then(response => response.json())
             .then((user) => {
-                console.log('signin user:', user)
-                if(!user.token){
+                if (!user.token) {
                     return document.getElementById('message').innerText = user.message
-                } else if(user.token) {
-                    this.props.setAuth(user.token);
+                } else if (user.token) {
                     sessionStorage.setItem('user', JSON.stringify(user));
+                    sessionStorage.setItem('auth', user.token);
                     this.setState({username: '', password: ''});
                 }
             })
@@ -53,7 +52,11 @@ class Login extends React.Component {
                     'Accept': 'Application/json, text/plain, */*',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({username: this.state.username, email: this.state.email, password: this.state.password})
+                body: JSON.stringify({
+                    username: this.state.username,
+                    email: this.state.email,
+                    password: this.state.password
+                })
             })
             .then(response => response.json())
             .then((result) => {
@@ -70,49 +73,60 @@ class Login extends React.Component {
 
     render() {
         let auth = sessionStorage.getItem('auth');
-        if(auth) {
-           return <Redirect to="/" />
+        if (auth) {
+            return <Redirect to="/"/>
         }
 
         return (
             <div id='body' className='justify-content-center'>
                 <div id='formContainer' className='loginContainer d-inline-flex flex-column justify-content-center'>
-                    <img src='assets/images/logo.png' alt="logo" className='logo-small w-50 mb-3' />
+                    <img src='assets/images/logo.png' alt="logo" className='logo-small w-50 mb-3'/>
                     <ul className='nav nav-tabs'>
-                        <li className='nav-item'><a className='nav-link active' data-toggle="tab" href="#signup">Sign Up </a></li>
-                        <li className='nav-item'><a className='nav-link' data-toggle="tab" href="#signin">Sign In </a></li>
+                        <li className='nav-item'><a className='nav-link active' data-toggle="tab" href="#signup">Sign
+                            Up </a></li>
+                        <li className='nav-item'><a className='nav-link' data-toggle="tab" href="#signin">Sign In </a>
+                        </li>
                     </ul>
 
-                    <div  className='tab-content justify-content-center mt-3'>
+                    <div className='tab-content justify-content-center mt-3'>
                         <form className='tab-pane active justify-content-center' id='signup'>
                             <div className="form-group">
                                 <label htmlFor="email">Email address</label>
                                 <input type="email" className="form-control" name="email"
-                                       placeholder="name@example.com" value={this.state.email} onChange={this.handleChange}/>
+                                       placeholder="name@example.com" value={this.state.email}
+                                       onChange={this.handleChange}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
-                                <input type="text" className="form-control" value={this.state.username} name="username" onChange={this.handleChange}/>
+                                <input type="text" className="form-control" value={this.state.username} name="username"
+                                       onChange={this.handleChange}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password">Choose Password</label>
-                                <input type="password" className="form-control" value={this.state.password} name="password" onChange={this.handleChange} />
+                                <input type="password" className="form-control" value={this.state.password}
+                                       name="password" onChange={this.handleChange}/>
                             </div>
-                            <button type="button" onClick={this.handleSignUpSubmit} className='btn btn-primary'>Sign Up</button>
+                            <button type="button" onClick={this.handleSignUpSubmit} className='btn btn-primary'>Sign
+                                Up
+                            </button>
                             <p id='userWasCreated'></p>
                         </form>
 
                         <form className='tab-pane' id='signin'>
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
-                                <input type="text" className="form-control" name="username" onChange={this.handleChange}/>
+                                <input type="text" className="form-control" name="username"
+                                       onChange={this.handleChange}/>
                             </div>
 
                             <div className="form-group">
                                 <label htmlFor="password">Password</label>
-                                <input type="password" className="form-control" name="password" onChange={this.handleChange}/>
+                                <input type="password" className="form-control" name="password"
+                                       onChange={this.handleChange}/>
                             </div>
-                            <button type="button" onClick={this.handleSignInSubmit} className='btn btn-primary'>Sign In</button>
+                            <button type="button" onClick={this.handleSignInSubmit} className='btn btn-primary'>Sign
+                                In
+                            </button>
                             <p id='message'></p>
                         </form>
                     </div>

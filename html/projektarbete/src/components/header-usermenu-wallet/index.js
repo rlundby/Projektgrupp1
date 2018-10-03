@@ -9,9 +9,21 @@ class UsermenuWallet extends Component {
         currentUserWallet: null
     };
 
+    // Gets the current users wallet info on mount
     componentDidMount() {
-        fetch('http://localhost:3001/api/user-wallet/' + this.state.currentUser.id)
-            .then(response => response.json())
+        fetch('http://localhost:3001/api/user-wallet/' + this.state.currentUser.id, {
+            headers: {
+                'Authorization': sessionStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    throw new Error('Unauthorized')
+                }
+                return response.json()
+            })
             .then(currentUserWallet => {
                 this.setState({currentUserWallet});
             });

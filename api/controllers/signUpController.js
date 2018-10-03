@@ -1,5 +1,5 @@
 const db = require('mongoose');
-const encrypt = require('bcrypt');
+const encrypt = require('bcrypt-nodejs');
 
 
 const User = require('../models/user');
@@ -25,9 +25,8 @@ exports.signup = (req, res) => {
                         });
 
                         user.save()
-                            .then(result => {
+                            .then(() => {
                                 res.status(201).json({message: 'User was created'});
-                                console.log('result: ', result)
                             })
                             .catch(err => {
                                 console.log('error: ', err);

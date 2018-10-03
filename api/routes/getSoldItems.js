@@ -1,7 +1,7 @@
 const route = require('express').Router();
 const solditems = require('../controllers/solditemsController');
 
-// Get the latest transactions
+// Get sold items
 route.get('/', solditems.getSoldItems);
 
 //Unsecred routes

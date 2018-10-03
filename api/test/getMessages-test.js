@@ -3,22 +3,20 @@ const expect = require('chai').expect;
 const request = require('supertest')("http://localhost:3001/api");
 
 
-
 describe('GET messages API', () => {
 
-        let token = null;
+    let token = null;
 
 
-
-        // first, get token
-        before(function(done) {
-            request.post('/signin')
-                .send({ username: 'admin', password: 'admin' })
-                .end(function(err, res) {
-                    token = res.body.token;
-                    done();
-                });
-        });
+    // first, get token
+    before(function (done) {
+        request.post('/signin')
+            .send({username: 'admin', password: 'admin'})
+            .end(function (err, res) {
+                token = res.body.token;
+                done();
+            });
+    });
 
 
     it('should return status 200 when getting messages from db successfully', (done) => {

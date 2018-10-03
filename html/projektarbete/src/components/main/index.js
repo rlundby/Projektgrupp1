@@ -6,12 +6,15 @@ import Footer from "../footer";
 import MonthlyEarnings from "../montlyEarnings";
 import TotalOrders from '../totalOrders';
 import LatestOrders from '../latestOrders';
+import Yearly from '../yearly';
 import AveragePrice from '../averagePrice';
-
+import Testimonial from '../testimonial';
 import Inbox from '../inbox';
 import Header from "../header";
 import RecentActivityLog from '../recentActivityFeed';
 import YearlySales from '../yearlysales/yearlysales';
+import YearlyEarnings from '../yearlyEarnings';
+
 
 
 class Main extends React.Component {
@@ -28,6 +31,7 @@ class Main extends React.Component {
             <div className="App">
 
                 <Header/>
+
                 <div className="wrapper">
                     <div className='container-fluid'>
                         <div className='row'>
@@ -36,20 +40,29 @@ class Main extends React.Component {
                             <AveragePrice/>
 
                         </div>
-                        <MonthlyEarnings/>
+
+                        <div className='row'>
+                            <MonthlyEarnings/>
+                            <Yearly/>
+                            <YearlyEarnings />
+                        </div>
+
                         <div className='row'>
                             <Inbox />
                             <RecentActivityLog />
                             <YearlySales />
-
+                            <Testimonial />
                         </div>
+
                         <div className='row'>
                             <LatestTransactions/>
                             <LatestOrders/>
                         </div>
                     </div>
-                    <Footer/>
-                </div>
+                    </div>
+
+                <Footer/>
+
             </div>
         );
     }

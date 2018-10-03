@@ -1,7 +1,8 @@
 const db = require('mongoose');
 const Order = require('../models/order');
 
-exports.getLatestOrders = (req, res) => {
+
+exports.getOrders = (req, res) => {
     Order.find()
         .exec()
         .then(orders => {
@@ -16,13 +17,13 @@ exports.getLatestOrders = (req, res) => {
                     }
                 })
 
-                let latestOrders = []
-                for(let i = 0; i < 6; i++) {
-                    let last = result.pop();
-                    latestOrders.push(last)
-                }
+                // let latestOrders = []
+                // for(let i = 0; i < 6; i++) {
+                //     let last = result.pop();
+                //     latestOrders.push(last)
+                // }
             
-            res.status(200).json(latestOrders);
+            res.status(200).json(result);
         })
         .catch(error => {
             console.log(error);

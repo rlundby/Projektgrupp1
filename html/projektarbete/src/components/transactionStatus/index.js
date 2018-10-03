@@ -6,6 +6,7 @@ class TransactionStatus extends Component {
     componentDidMount() {
     }
 
+    // Renders different status for the transaction depending on status code.
     render() {
 
         if(this.props.statusCode === 'Confirmed'){

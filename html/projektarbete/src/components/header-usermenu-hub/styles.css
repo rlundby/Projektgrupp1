@@ -16,3 +16,10 @@
     max-height: 100vh;
     overflow-y: auto;
 }
+
+@media only screen and (min-width: 930px) {
+    .userModal {
+        max-width: 60%;
+        margin-left: 20%;
+    }
+}

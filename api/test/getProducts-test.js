@@ -1,46 +1,41 @@
-const expect = require('chai').expect;
-const request = require('supertest')("http://localhost:3001/api/products");
-const products = require('../controllers/productsController');
+const request = require('supertest')("http://localhost:3001/api");
 
-let chai = require('chai');
-//let server = require('../server');
-const should = chai.should();
+describe('Checks getProducts API', function(){
 
-// BDD Should
-describe('BDD test with should', function(){
+    let token = null;
 
-    beforeEach(() => {
-
-    });
-    it('Function getProducts should return 200 OK', function(done) {
-        request.get('/')
-            .expect(200, done);
-    });
-    it('Function getProducts should return an array', function(done) {
-        request.get('/')
-            .expect("Content-type", /json/)
-            .expect(200)
-            .end(function(err,res){
-                res.status.should.equal(200);
-                res.body.should.be.an('array')
+    // first, get token
+    before(function(done) {
+        request.post('/signin')
+            .send({ username: 'admin', password: 'admin' })
+            .end(function(err, res) {
+                token = res.body.token;
                 done();
             });
+    });
+
+    it('Function getProducts should return 200 OK', function(done) {
+         request.get('/products')
+            .set('Authorization', token)
+            .set('Accept', 'application/json')
+            .set('Content-Type', 'application/json')
+            .expect("Content-Type", /json/)
+            .expect(200, done)
+    });
+
+    it('Function getProducts should return an array', function(done) {
+        request.get('/products')
+            .set('Authorization', token)
+            .set('Accept', 'application/json')
+            .set('Content-Type', 'application/json')
+            .expect("Content-Type", /json/)
+            .expect(200)
+            .end((err, res) => {
+                res.body.should.be.an('array');
+                done()
+            })
 
 
     });
-    // it('Objects in Products should contain keys: id, name, price', function() {
-    //
-    //     request.get('/')
-    //         .expect("Content-type", /json/)
-    //         .expect(200)
-    //         .end(function(err,res){
-    //             res.status.should.equal(200);
-    //             res.body[0].should.have.key('hej');
-    //             console.log(res.body[0])
-    //             done();
-    //         });
-    // });
-    
-    
-    
+   
 });
